@@ -14,7 +14,7 @@ namespace Bil372ProjeGrup99
         {
             string EncryptionKey = "0ram@1234xxxxxxxxxxtttttuuuuuiiiiio";  //we can change the code converstion key as per our requirement    
             byte[] clearBytes = Encoding.Unicode.GetBytes(encryptString);
-            using (Aes encryptor = Aes.Create())
+            using (Aes encryptor = Aes.Create()) //asdfasd
             {
                 Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] {
             0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76
