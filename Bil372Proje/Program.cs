@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bil372Proje
+namespace Bil372ProjeGrup99
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Bil372Proje
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new KullaniciGirisi());
+            Application.Run(new AdminPage());
         }
     }
 }

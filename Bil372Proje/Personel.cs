@@ -16,7 +16,8 @@ namespace Bil372ProjeGrup99
 
         public DateTime DogumTarihi { get; set; }
 
-        public string Isim { get; set; }
+        public string Ad { get; set; }
+        public string Soyad { get; set; }
 
         public string Egitim { get; set; }
 

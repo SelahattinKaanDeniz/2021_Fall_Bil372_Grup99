@@ -9,6 +9,7 @@ namespace Bil372ProjeGrup99
     public class Sefer
     {
         public string SeferID { get; set; }
+        public string UcakID { get; set; }
         public string UcusSuresi { get; set; }
         public DateTime SeferTarihi { get; set; }
         public string VarisZamani { get; set; }

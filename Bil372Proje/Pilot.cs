@@ -8,8 +8,10 @@ namespace Bil372ProjeGrup99
 {
     public class Pilot
     {
+        public string MurettebatID { get; set; }
+        public string UcakID { get; set; }
+        public string PersonelID { get; set; }
         public string LisansTuru { get; set; }
-
         public string PilotRolu { get; set; }
     }
 }

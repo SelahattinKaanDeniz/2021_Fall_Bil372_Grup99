@@ -8,6 +8,7 @@ namespace Bil372ProjeGrup99
 {
     class ServisPersoneli
     {
+        public string ServisPersonelTipi { get; set; }
         public string PersonelID{ get; set; }
         public string CalistigiHavalimani { get; set; }
 
