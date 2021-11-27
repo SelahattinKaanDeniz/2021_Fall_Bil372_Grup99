@@ -17,7 +17,14 @@ namespace Bil372ProjeGrup99
             InitializeComponent();
         }
 
+
         private void KullaniciGirisi_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+
         {
 
         }
