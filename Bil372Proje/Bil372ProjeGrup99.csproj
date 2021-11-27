@@ -52,6 +52,9 @@
   <ItemGroup>
     <Compile Include="Aescoding.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="GenelBakim.cs" />
+    <Compile Include="GenelBakimTeknisyeni.cs" />
+    <Compile Include="KabinMemuru.cs" />
     <Compile Include="KullaniciGirisi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,8 +62,17 @@
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="Murettebat.cs" />
+    <Compile Include="Personel.cs" />
+    <Compile Include="Pilot.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sefer.cs" />
+    <Compile Include="Servis.cs" />
+    <Compile Include="ServisPersoneli.cs" />
+    <Compile Include="Tamir.cs" />
+    <Compile Include="TamirPersoneli.cs" />
+    <Compile Include="Ucak.cs" />
     <EmbeddedResource Include="KullaniciGirisi.resx">
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
     </EmbeddedResource>
