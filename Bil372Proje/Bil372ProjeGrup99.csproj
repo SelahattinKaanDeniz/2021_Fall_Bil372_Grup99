@@ -78,6 +78,12 @@
     <Compile Include="ServisPersoneli.cs" />
     <Compile Include="Tamir.cs" />
     <Compile Include="TamirPersoneli.cs" />
+    <Compile Include="TamirPersoneliPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TamirPersoneliPage.Designer.cs">
+      <DependentUpon>TamirPersoneliPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ucak.cs" />
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
@@ -94,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TamirPersoneliPage.resx">
+      <DependentUpon>TamirPersoneliPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

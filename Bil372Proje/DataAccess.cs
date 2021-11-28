@@ -18,6 +18,7 @@ namespace Bil372ProjeGrup99
             }
         }
 
+
         public List<String> GetTableNames()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -25,6 +26,12 @@ namespace Bil372ProjeGrup99
                 var output = connection.Query<String>($"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_CATALOG = 'BİL372'; ").ToList();
                 return output;
             }
+        }
+        public void getPersonelAdi()
+        {
+
+
+
         }
     }
 }
