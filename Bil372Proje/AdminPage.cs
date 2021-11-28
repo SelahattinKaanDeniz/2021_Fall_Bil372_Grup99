@@ -58,22 +58,32 @@ namespace Bil372ProjeGrup99
 
             // passing string "str" in 
             // switch statement
-            /*switch (pageName)
+            switch (pageName)
             {
 
-                case "Personel":
-                    PersonelPage f1 = new PersonelPage();
-                    f1.ShowDialog();
-                    break;
-                case "Kullanici":
-                    KullaniciPage f2 = new KullaniciPage();
-                    f2.ShowDialog();
-                    break;
+                /* case "Personel":
+                     PersonelPage f1 = new PersonelPage();
+                     f1.ShowDialog();
+                     break;
+                 case "Kullanici":
+                     KullaniciPage f2 = new KullaniciPage();
+                     f2.ShowDialog();
+                     break;*/
                 case "Ucak":
-                    UcakPage f3 = new UcakPage();
-                    f3.ShowDialog();
-                    break;
-                case "Murettebat":
+                    if (islem == "Düzenle" || islem == "Sil")
+                    {
+                        UcakPage f3 = new UcakPage(islem);
+                        f3.ShowDialog();
+                        break;
+                    }
+                    else
+                    {
+                        UcakEklePage f3 = new UcakEklePage(islem);
+                        f3.ShowDialog();
+                        break;
+                    }
+            
+                /*case "Murettebat":
                     MurettebatPage f4 = new MurettebatPage();
                     f4.ShowDialog();
                     break;
@@ -108,12 +118,12 @@ namespace Bil372ProjeGrup99
                 case "ServisPersoneli":
                     ServisPersoneliPage f12 = new ServisPersoneliPage();
                     f12.ShowDialog();
-                    break;
+                    break;*/
                 default:
-                    GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
-                    f13.ShowDialog();
+                   // GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
+                   // f13.ShowDialog();
                     break;
-            }*/
+            }
                    
         }
     }

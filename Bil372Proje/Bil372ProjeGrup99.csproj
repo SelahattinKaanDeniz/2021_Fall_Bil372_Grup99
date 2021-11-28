@@ -98,6 +98,18 @@
       <DependentUpon>TamirPersoneliPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Ucak.cs" />
+    <Compile Include="UcakEklePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UcakEklePage.Designer.cs">
+      <DependentUpon>UcakEklePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UcakPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UcakPage.Designer.cs">
+      <DependentUpon>UcakPage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +128,12 @@
     </Compile>
     <EmbeddedResource Include="TamirPersoneliPage.resx">
       <DependentUpon>TamirPersoneliPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcakEklePage.resx">
+      <DependentUpon>UcakEklePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcakPage.resx">
+      <DependentUpon>UcakPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

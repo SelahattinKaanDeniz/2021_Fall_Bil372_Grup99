@@ -63,5 +63,46 @@ namespace Bil372ProjeGrup99
 
 
         }
+        public List<Ucak> GetUcak()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Ucak>($"select * from Ucak; ").ToList();
+                return output;
+            }
+        }
+        public void UpdateUcak(string ucakID,string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Ucak SET Model='" + model + "', Yolcukapasitesi='" + yolcukapasitesi + "', Agirlik='" + agirlik + "', UreticiFirma='" + ureticifirma + "', UretimYili='" + uretimyili + "' WHERE UcakID='" + ucakID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void DeleteUcak(string ucakID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Ucak WHERE UcakID='" + ucakID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void EkleUcak(string ucakID, string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO Ucak (UcakID, Model, YolcuKapasitesi,Agirlik, UreticiFirma, UretimYili) Values (@UcakID, @Model , @YolcuKapasitesi , @Agirlik , @UreticiFirma , @UretimYili );";
+
+                Ucak ucak = new Ucak { UcakID = ucakID, Model = model, YolcuKapasitesi = yolcukapasitesi, Agirlik = agirlik, UreticiFirma = ureticifirma, UretimYili = uretimyili };
+                connection.Execute(sql, ucak);
+
+
+            }
+        }
     }
 }
