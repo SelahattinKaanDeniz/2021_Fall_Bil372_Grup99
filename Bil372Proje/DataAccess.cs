@@ -214,7 +214,48 @@ namespace Bil372ProjeGrup99
 
 
         }
+        public List<Sefer> GetSefer()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Sefer>($"SELECT * FROM Sefer").ToList();
+                return output;
+            }
+        }
+        public void InsertSefer(String seferid,String ucakid,String ucussuresi,DateTime sefertarihi,String kalkiszamani,String variszamani,String kalkisyeri,String varisyeri)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Sefer sefer = new Sefer();
+                sefer.SeferID = seferid;
+                sefer.UcakID = ucakid;
+                sefer.UcusSuresi = ucussuresi;
+                sefer.SeferTarihi = sefertarihi;
+                sefer.KalkisZamani = kalkiszamani;
+                sefer.VarisZamani = variszamani;
+                sefer.KalkisYeri = kalkisyeri;
+                sefer.VarisYeri = varisyeri;
+                string sql = "INSERT INTO Sefer (SeferID,UcakID,UcusSuresi,SeferTarihi,VarisZamani,KalkisZamani,VarisYeri,KalkisYeri) Values (@SeferID,@UcakID,@UcusSuresi,@SeferTarihi,@VarisZamani,@KalkisZamani,@VarisYeri,@KalkisYeri);";
+                connection.Execute(sql, sefer);
+            }
+        }
+        public void DeleteSeferbyID(String seferid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Sefer WHERE Sefer='" + seferid + "'";
+                connection.Execute(querystr);
+            }
+        }
+        public void UpdateSefer(string seferid, string ucakid, string ucussuresi, DateTime SeferTarihi, string variszamani, string kalkiszamani, String varisyeri, String kalkisyeri)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Sefer SET UcakID='" + ucakid + "', UcusSuresi='" + ucussuresi + "', SeferTarihi='" + SeferTarihi + "', VarisZamani='" + variszamani + "', KalkisZamani='" + kalkiszamani + "', VarisYeri='" + varisyeri + "', KalkisYeri='" + kalkisyeri + "' WHERE SeferID='" + seferid + "'";
 
+                connection.Execute(querystr);
+            }
+        }
 
 
 
@@ -253,5 +294,9 @@ namespace Bil372ProjeGrup99
             }
         }
 
+
     }
 }
+
+    
+

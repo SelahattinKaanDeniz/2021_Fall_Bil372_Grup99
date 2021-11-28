@@ -135,6 +135,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SeferYoneticisiPage.resx">
+      <DependentUpon>SeferYoneticisiPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServisYoneticisiPage.resx">
+      <DependentUpon>ServisYoneticisiPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TamirPersoneliPage.resx">
       <DependentUpon>TamirPersoneliPage.cs</DependentUpon>
     </EmbeddedResource>

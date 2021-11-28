@@ -16,5 +16,10 @@ namespace Bil372ProjeGrup99
         {
             InitializeComponent();
         }
+
+        private void ServisYoneticisiPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
