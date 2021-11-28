@@ -42,21 +42,21 @@ namespace Bil372ProjeGrup99
                     switch (tip)
                     {
                         case "Admin":
-                            AdminPage newscreen = new AdminPage();
-                            newscreen.ShowDialog();
                             this.Hide();
+                            AdminPage newscreen = new AdminPage();
+                            newscreen.ShowDialog();                           
                             break;
                             
                         case "Servis":
+                            this.Hide();
                             ServisYoneticisiPage newscreen1 = new ServisYoneticisiPage();
                             newscreen1.ShowDialog();
-                            this.Hide();
                             break;
 
                         case "Sefer":
+                            this.Hide();
                             SeferYoneticisiPage newscreen2 = new SeferYoneticisiPage();
                             newscreen2.ShowDialog();
-                            this.Hide();
                             break;
                     }
                 }

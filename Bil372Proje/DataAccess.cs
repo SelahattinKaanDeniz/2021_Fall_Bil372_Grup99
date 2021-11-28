@@ -8,7 +8,7 @@ using Dapper;
 
 namespace Bil372ProjeGrup99
 {
-      class DataAccess
+    class DataAccess
     {
         public void InsertPersonel()
         {
@@ -112,7 +112,7 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
-        public void UpdateUcak(string ucakID,string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+        public void UpdateUcak(string ucakID, string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
@@ -147,6 +147,7 @@ namespace Bil372ProjeGrup99
         }
 
 
+
         public String getTamirPersoneliUzmanlikByID(string ID)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -167,9 +168,38 @@ namespace Bil372ProjeGrup99
 
                 return output[0].PersonelID;
             }
+        }
+        public List<Personel> getAtanmamisPersonelAdiMurettebat()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID from Personel where not exists(select Murettebat.PersonelID from Murettebat where Murettebat.PersonelID=Personel.PersonelID ) and not exists(select ServisPersoneli.PersonelID from ServisPersoneli where ServisPersoneli.PersonelID=Personel.PersonelID) and PersonelTipi = 'Murettebat'").ToList();
+                return output;
+            }
+        }
+
+        public List<Personel> getAtanmisPersonelAdiMurettebat()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID from Personel,Murettebat where Murettebat.PersonelID=Personel.PersonelID").ToList();
+                return output;
+            }
+        }
+
+        public List<Murettebat> getMurettebat(string ID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Murettebat>($"select * from Murettebat where PersonelID='" + ID + "' ").ToList();
+
+                return output;
+
+            }
 
 
         }
+
 
         public void UpdateTamirPersoneli(string PersonelID, string Uzmanlik)
         {
@@ -186,6 +216,42 @@ namespace Bil372ProjeGrup99
         }
 
 
+
+
+
+        public void UpdateMurettebat(string murettebatID, string ucakID, string personelID, string yabanciDil, string ucusSuresi, string murettebatTipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Murettebat SET YabanciDil='" + yabanciDil + "', UcusSuresi='" + ucusSuresi + "', MurettebatTipi='" + murettebatTipi + "' WHERE MurettebatID='" + murettebatID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void DeleteMurettebat(string murettebatID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Murettebat WHERE MurettebatID='" + murettebatID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void EkleMurettebat(string murettebatID, string ucakID, string personelID, string yabanciDil, string ucusSuresi, string murettebatTipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO Murettebat (MurettebatID, UcakID, PersonelID,YabanciDil, UcusSuresi, MurettebatTipi) Values (@murettebatID, @ucakID , @personelID , @yabanciDil , @ucusSuresi , @murettebatTipi );";
+
+                Murettebat murettebat = new Murettebat { MurettebatID = murettebatID, UcakID = ucakID, PersonelID = personelID, YabanciDil = yabanciDil, UcusSuresi = ucusSuresi, MurettebatTipi = murettebatTipi };
+                connection.Execute(sql, murettebat);
+
+
+            }
+        }
 
     }
 }

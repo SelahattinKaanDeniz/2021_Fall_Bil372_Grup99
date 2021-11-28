@@ -70,6 +70,12 @@
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Murettebat.cs" />
+    <Compile Include="MurettebatPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MurettebatPage.Designer.cs">
+      <DependentUpon>MurettebatPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Personel.cs" />
     <Compile Include="Pilot.cs" />
     <Compile Include="Program.cs" />
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KullaniciGirisi.resx">
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MurettebatPage.resx">
+      <DependentUpon>MurettebatPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

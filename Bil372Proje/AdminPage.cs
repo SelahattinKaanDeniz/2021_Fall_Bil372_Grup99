@@ -95,11 +95,11 @@ namespace Bil372ProjeGrup99
                         break;
                     }
             
-                /*case "Murettebat":
-                    MurettebatPage f4 = new MurettebatPage();
+                case "Murettebat":
+                    MurettebatPage f4 = new MurettebatPage(islem);
                     f4.ShowDialog();
                     break;
-                case "Pilot":
+               /* case "Pilot":
                     PilotPage f5 = new PilotPage();
                     f5.ShowDialog();
                     break;
