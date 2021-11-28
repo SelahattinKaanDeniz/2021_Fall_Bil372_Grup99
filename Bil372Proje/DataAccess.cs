@@ -17,6 +17,36 @@ namespace Bil372ProjeGrup99
 
             }
         }
+        public Boolean MatchKullaniciAdi(String KullaniciAdi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Boolean result = false;
+                var output = connection.Query<Kullanici>($"select KullaniciAdi from Kullanici where KullaniciAdi= '" + KullaniciAdi + "'").ToList();
+                if (output.Count > 0)
+                    result = true;
+                return result;
+            }
+        }
+        public Boolean MatchSifre(String Sifre)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Boolean result = false;
+                var output = connection.Query<Kullanici>($"select Sifre from Kullanici where Sifre= '" + Sifre + "'").ToList();
+                if (output.Count > 0)
+                    result = true;
+                return result;
+            }
+        }
+        public String GetKullaniciTipi(String KullaniciAdi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Kullanici>($"select * from Kullanici where KullaniciAdi= '" + KullaniciAdi + "'").ToList();
+                return output[0].KullaniciTipi;
+            }
+        }
 
 
         public List<String> GetTableNames()

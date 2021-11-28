@@ -29,29 +29,31 @@ namespace Bil372ProjeGrup99
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.KullaniciAditb = new System.Windows.Forms.TextBox();
+            this.Sifretb = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // KullaniciAditb
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(104, 144);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 41);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.KullaniciAditb.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.KullaniciAditb.Location = new System.Drawing.Point(104, 144);
+            this.KullaniciAditb.Name = "KullaniciAditb";
+            this.KullaniciAditb.Size = new System.Drawing.Size(193, 35);
+            this.KullaniciAditb.TabIndex = 0;
+            this.KullaniciAditb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // Sifretb
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(104, 272);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 41);
-            this.textBox2.TabIndex = 1;
+            this.Sifretb.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Sifretb.Location = new System.Drawing.Point(104, 272);
+            this.Sifretb.Name = "Sifretb";
+            this.Sifretb.Size = new System.Drawing.Size(193, 35);
+            this.Sifretb.TabIndex = 1;
+            this.Sifretb.TextChanged += new System.EventHandler(this.Sifretb_TextChanged);
             // 
             // label1
             // 
@@ -81,18 +83,29 @@ namespace Bil372ProjeGrup99
             this.button1.TabIndex = 4;
             this.button1.Text = "Giris Yap";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(169, 405);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 24);
+            this.label3.TabIndex = 5;
             // 
             // KullaniciGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Controls.Add(this.Sifretb);
+            this.Controls.Add(this.KullaniciAditb);
             this.Name = "KullaniciGirisi";
             this.Text = "Kullanici Girisi";
             this.Load += new System.EventHandler(this.KullaniciGirisi_Load);
@@ -103,11 +116,12 @@ namespace Bil372ProjeGrup99
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox KullaniciAditb;
+        private System.Windows.Forms.TextBox Sifretb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
