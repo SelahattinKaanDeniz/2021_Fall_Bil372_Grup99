@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
@@ -81,6 +85,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sefer.cs" />
+    <Compile Include="SeferEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeferEkle.Designer.cs">
+      <DependentUpon>SeferEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeferPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeferPage.Designer.cs">
+      <DependentUpon>SeferPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeferYoneticisiPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +105,12 @@
     </Compile>
     <Compile Include="Servis.cs" />
     <Compile Include="ServisPersoneli.cs" />
+    <Compile Include="ServisPersoneliPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServisPersoneliPage.Designer.cs">
+      <DependentUpon>ServisPersoneliPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServisYoneticisiPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,8 +157,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SeferEkle.resx">
+      <DependentUpon>SeferEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeferPage.resx">
+      <DependentUpon>SeferPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeferYoneticisiPage.resx">
       <DependentUpon>SeferYoneticisiPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServisPersoneliPage.resx">
+      <DependentUpon>ServisPersoneliPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServisYoneticisiPage.resx">
       <DependentUpon>ServisYoneticisiPage.cs</DependentUpon>

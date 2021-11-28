@@ -61,7 +61,7 @@ namespace Bil372ProjeGrup99
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
-                var output = connection.Query<Personel>($"select Ad, Soyad,PersonelID from Personel where not exists(select  Ad, Soyad from Murettebat ) and not exists(select Ad, Soyad from ServisPersoneli) and PersonelTipi = 'Servis'").ToList();
+                var output = connection.Query<Personel>($"select * from Personel where not exists(select Murettebat.PersonelID from Murettebat where Murettebat.PersonelID=Personel.PersonelID ) and not exists(select ServisPersoneli.PersonelID from ServisPersoneli where ServisPersoneli.PersonelID=Personel.PersonelID) and PersonelTipi = 'Servis'").ToList();
                 return output;
             }
 
@@ -104,6 +104,17 @@ namespace Bil372ProjeGrup99
 
         }
 
+        public List<ServisPersoneli> getServisPersoneliAtanmisAdi()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<ServisPersoneli>($"select Ad, Soyad,Personel.PersonelID,TamirPersoneli.Uzmanlik from Personel,TamirPersoneli where Personel.PersonelID=TamirPersoneli.PersonelID").ToList();
+                return output;
+            }
+
+
+        }
+
         public List<Ucak> GetUcak()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -112,11 +123,64 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
-        public void UpdateUcak(string ucakID, string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+
+        //public void UpdateUcak(string ucakID, string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+
+        public List<Personel> GetPersonel()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select * from Personel; ").ToList();
+                return output;
+            }
+        }
+        public List<ServisPersoneli> GetServisPersoneli()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<ServisPersoneli>($"select * from ServisPersoneli  ").ToList();
+                return output;
+            }
+        }
+
+        public String GetServisPersoneliAdi(string ID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad,Soyad from Personel where PersonelID='{ID}' ").ToList();
+                return output[0].Ad+" "+ output[0].Soyad;
+            }
+        }
+        public String getServisPersoneliIDbyName(string Ad, string Soyad)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select PersonelID from Personel where Personel.Ad='{Ad}' and Personel.Soyad='{Soyad}' ").ToList();
+                 
+                return output[0].PersonelID;
+            }
+
+
+        }
+
+
+        public void UpdateUcak(string ucakID,string model, string yolcukapasitesi, string agirlik, string ureticifirma, string uretimyili)
+
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
                 string querystr = "UPDATE Ucak SET Model='" + model + "', Yolcukapasitesi='" + yolcukapasitesi + "', Agirlik='" + agirlik + "', UreticiFirma='" + ureticifirma + "', UretimYili='" + uretimyili + "' WHERE UcakID='" + ucakID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void UpdateServisPersoneli(string ServisPersoneliID, string ServisPersoneliTipi, string PersonelID, string CalistigiHavalimani)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE ServisPersoneli SET  ServisPersonelTipi='" + ServisPersoneliTipi + "', ServisPersoneliID='" + ServisPersoneliID + "', CalistigiHavalimani='" + CalistigiHavalimani+ "' WHERE PersonelID='" + PersonelID + "'";
 
                 connection.Execute(querystr);
 
@@ -146,7 +210,27 @@ namespace Bil372ProjeGrup99
             }
         }
 
+        public void EkleServisPersoneli(string ServisPersoneliID, string ServisPersonelTipi, string PersonelID, string CalistigiHavalimani)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO ServisPersoneli  Values (@ServisPersoneliID, @ServisPersonelTipi , @PersonelID , @CalistigiHavalimani );";
 
+                ServisPersoneli sp = new ServisPersoneli { ServisPersoneliID = ServisPersoneliID, ServisPersonelTipi = ServisPersonelTipi, PersonelID = PersonelID, CalistigiHavalimani = CalistigiHavalimani };
+                connection.Execute(sql, sp);
+                
+            }
+        }
+        public void DeleteServisPersoneli(string ServisPersoneliID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM ServisPersoneli WHERE ServisPersoneliID='" + ServisPersoneliID + "'";
+                connection.Execute(querystr);
+
+
+            }
+        }
 
         public String getTamirPersoneliUzmanlikByID(string ID)
         {
@@ -195,6 +279,18 @@ namespace Bil372ProjeGrup99
 
                 return output;
 
+            }
+
+
+        }
+
+
+        public List<Personel> getServisPersoneli()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad from Personel where PersonelTipi='Servis'").ToList();
+                return output;
             }
 
 

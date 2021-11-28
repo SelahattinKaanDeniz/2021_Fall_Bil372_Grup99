@@ -127,18 +127,18 @@ namespace Bil372ProjeGrup99
                     TamirPersoneliPage f11 = new TamirPersoneliPage(islem);
                     f11.ShowDialog();
                     break;
-            /*
+            
                 case "ServisPersoneli":
-                    ServisPersoneliPage f12 = new ServisPersoneliPage();
+                    ServisPersoneliPage f12 = new ServisPersoneliPage(islem);
                     f12.ShowDialog();
-                    break;*/
+                    break;
                 default:
 
                    // GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
                    // f13.ShowDialog();
                     break;
 
-                    GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
+                    /*GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
                     f13.ShowDialog();
                     break;*/
 

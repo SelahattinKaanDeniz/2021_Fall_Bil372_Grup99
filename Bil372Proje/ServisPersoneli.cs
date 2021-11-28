@@ -11,6 +11,6 @@ namespace Bil372ProjeGrup99
         public string ServisPersonelTipi { get; set; }
         public string PersonelID{ get; set; }
         public string CalistigiHavalimani { get; set; }
-
+        public string ServisPersoneliID { get; set; }
     }
 }
