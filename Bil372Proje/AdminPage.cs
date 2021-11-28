@@ -61,6 +61,7 @@ namespace Bil372ProjeGrup99
             switch (pageName)
             {
 
+
                 /* case "Personel":
                      PersonelPage f1 = new PersonelPage();
                      f1.ShowDialog();
@@ -69,6 +70,17 @@ namespace Bil372ProjeGrup99
                      KullaniciPage f2 = new KullaniciPage();
                      f2.ShowDialog();
                      break;*/
+
+                /*
+                case "Personel":
+                    PersonelPage f1 = new PersonelPage();
+                    f1.ShowDialog();
+                    break;
+                case "Kullanici":
+                    KullaniciPage f2 = new KullaniciPage();
+                    f2.ShowDialog();
+                    break;
+
                 case "Ucak":
                     if (islem == "Düzenle" || islem == "Sil")
                     {
@@ -111,18 +123,25 @@ namespace Bil372ProjeGrup99
                     TamirPage f10 = new TamirPage();
                     f10.ShowDialog();
                     break;
-                case "TamirPersoneli":
-                    TamirPersoneliPage f11 = new TamirPersoneliPage();
+                */case "TamirPersoneli":
+                    TamirPersoneliPage f11 = new TamirPersoneliPage(islem);
                     f11.ShowDialog();
                     break;
+            /*
                 case "ServisPersoneli":
                     ServisPersoneliPage f12 = new ServisPersoneliPage();
                     f12.ShowDialog();
                     break;*/
                 default:
+
                    // GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
                    // f13.ShowDialog();
                     break;
+
+                    GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
+                    f13.ShowDialog();
+                    break;*/
+
             }
                    
         }

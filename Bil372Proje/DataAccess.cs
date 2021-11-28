@@ -57,12 +57,53 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
-        public void getPersonelAdi()
+        public List<Personel> getAtanmamisPersonelAdiServis()
         {
-
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,PersonelID from Personel where not exists(select  Ad, Soyad from Murettebat ) and not exists(select Ad, Soyad from ServisPersoneli) and PersonelTipi = 'Servis'").ToList();
+                return output;
+            }
 
 
         }
+        public void InsertTamirPersoneli(string PersonelID, string Uzmanlik)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                TamirPersoneli tamirPersonel = new TamirPersoneli();
+                tamirPersonel.PersonelID = PersonelID;
+                tamirPersonel.Uzmanlik = Uzmanlik;
+                string sql = "INSERT INTO tamirPersoneli  Values (@PersonelID,@Uzmanlik);";
+                connection.Execute(sql, tamirPersonel);
+            }
+
+
+        }
+
+        public String getPersonelIDbyName(string Ad, string Soyad)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select PersonelID from Personel where Ad='{Ad}' and Soyad='{Soyad}'").ToList();
+                
+                return output[0].PersonelID;
+            }
+
+
+        }
+
+        public List<Personel> getTamirPersoneliAtanmisAdi()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID,TamirPersoneli.Uzmanlik from Personel,TamirPersoneli where Personel.PersonelID=TamirPersoneli.PersonelID" ).ToList();
+                return output;
+            }
+
+
+        }
+
         public List<Ucak> GetUcak()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -104,5 +145,47 @@ namespace Bil372ProjeGrup99
 
             }
         }
+
+
+        public String getTamirPersoneliUzmanlikByID(string ID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<TamirPersoneli>($"select Uzmanlik from TamirPersoneli where PersonelID='{ID}' ").ToList();
+
+                return output[0].Uzmanlik;
+            }
+
+
+        }
+
+        public String getTamirPersoneliIDbyName(string Ad,string Soyad)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select PersonelID from Personel where Personel.Ad='{Ad}' and Personel.Soyad='{Soyad}' ").ToList();
+
+                return output[0].PersonelID;
+            }
+
+
+        }
+
+        public void UpdateTamirPersoneli(string PersonelID, string Uzmanlik)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                TamirPersoneli tamirPersonel = new TamirPersoneli();
+                tamirPersonel.PersonelID = PersonelID;
+                tamirPersonel.Uzmanlik = Uzmanlik;
+                string sql = "INSERT INTO tamirPersoneli  Values (@PersonelID,@Uzmanlik);";
+                connection.Execute(sql, tamirPersonel);
+            }
+
+
+        }
+
+
+
     }
 }
