@@ -389,7 +389,47 @@ namespace Bil372ProjeGrup99
 
             }
         }
+        public List<Servis> GetServis()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Servis>($"SELECT * FROM Servis").ToList();
+                return output;
+            }
+        }
+        public void InsertServis(String servisid,String ucakid,DateTime baslangictarihi,DateTime bitistarihi,String servistipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Servis servis = new Servis();
+                servis.ServisID = servisid;
+                servis.UcakID = ucakid;
+                servis.BaslangicTarihi = baslangictarihi;
+                servis.BitisTarihi = bitistarihi;
+                servis.ServisTipi = servistipi;
+                string sql = "INSERT INTO Servis (ServisID,UcakID,BaslangicTarihi,BitisTarihi,ServisTipi) Values (@ServisID,@UcakID,@BaslangicTarihi,@BitisTarihi,@ServisTipi);";
+                connection.Execute(sql, servis);
+            }
+        }
+        public void UpdateServis(string servisid, string ucakID, DateTime baslangictarihi, DateTime bitistarihi, string servistipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Servis SET UcakID='" + ucakID + "', BaslangicTarihi='" + baslangictarihi + "', BitisTarihi='" + bitistarihi + "', ServisTipi='" + servistipi + "' WHERE ServisID='" + servisid + "'";
 
+                connection.Execute(querystr);
+
+            }
+        }
+        public void DeleteServis(string ServisID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Servis WHERE ServisID='" + ServisID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
 
     }
 }

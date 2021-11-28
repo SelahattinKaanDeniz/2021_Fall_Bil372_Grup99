@@ -21,7 +21,7 @@ namespace Bil372ProjeGrup99
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
             DateTime today = DateTime.Now;
             List <Sefer> seferler = da.GetSefer();
-            foreach(Sefer x in seferler)
+            foreach (Sefer x in seferler)
             {
                 if (x.SeferTarihi > today)
                 {
