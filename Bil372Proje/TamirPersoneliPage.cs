@@ -168,6 +168,8 @@ namespace Bil372ProjeGrup99
                     
                     comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
                 }
+                comboBox1.Enabled = false;
+                
 
 
             }
