@@ -132,6 +132,10 @@ namespace Bil372ProjeGrup99
                     ServisPersoneliPage f12 = new ServisPersoneliPage(islem);
                     f12.ShowDialog();
                     break;
+                case "GenelBakimTeknisyeni":
+                    GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage(islem);
+                    f13.ShowDialog();
+                    break;
                 default:
 
                    // GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();

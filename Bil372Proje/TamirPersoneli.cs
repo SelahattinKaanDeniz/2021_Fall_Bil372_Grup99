@@ -10,5 +10,6 @@ namespace Bil372ProjeGrup99
     {
         public string PersonelID { get; set; }
         public string Uzmanlik { get; set; }
+        public string ServisPersoneliID { get; set; }
     }
 }

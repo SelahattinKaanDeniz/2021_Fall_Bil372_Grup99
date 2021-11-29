@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Bil372ProjeGrup99
 {
-    public partial class TamirPersoneliPage : Form
+    public partial class GenelBakimTeknisyeniPage : Form
     {
         public string message;
-        List<TamirPersoneli> personel;
-        public TamirPersoneliPage(string msg)
+        List<GenelBakimTeknisyeni> personel;
+        public GenelBakimTeknisyeniPage(string msg)
         {
             InitializeComponent();
             message = msg;
@@ -22,7 +22,7 @@ namespace Bil372ProjeGrup99
             if (msg == "Ekle")
             {
                 List<Personel> Personel = new List<Personel>();
-                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                Personel = da.getAtanmamisServisPersoneliAdiGenelBakimTeknisyeni();
                 for (int i = 0; i < Personel.Count; i++)
                 {
                     if (Personel[i].PersonelTipi == "Servis")
@@ -36,8 +36,8 @@ namespace Bil372ProjeGrup99
             else if (msg == "Düzenle")
             {
                 Console.WriteLine('2');
-                List<TamirPersoneli> Personel = new List<TamirPersoneli>();
-                Personel = da.GetTamirPersoneli();
+                List<GenelBakimTeknisyeni> Personel = new List<GenelBakimTeknisyeni>();
+                Personel = da.GetGenelBakimTeknisyeni();
                 for (int i = 0; i < Personel.Count; i++)
                 {
                     PersonelAdicb.Items.Add(da.GetServisPersoneliAdi(Personel[i].PersonelID));
@@ -47,8 +47,8 @@ namespace Bil372ProjeGrup99
             }
             else if (msg == "Sil")
             {
-                List<TamirPersoneli> Personel = new List<TamirPersoneli>();
-                Personel = da.GetTamirPersoneli();
+                List<GenelBakimTeknisyeni> Personel = new List<GenelBakimTeknisyeni>();
+                Personel = da.GetGenelBakimTeknisyeni();
                 for (int i = 0; i < Personel.Count; i++)
                 {
                     PersonelAdicb.Items.Add(da.GetServisPersoneliAdi(Personel[i].PersonelID));
@@ -58,21 +58,16 @@ namespace Bil372ProjeGrup99
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void onayla_Click(object sender, EventArgs e)
         {
             if (onayla.Text == "Ekle")
             {
-                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(Uzmanliktb.Text == string.Empty))
+                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(teknisyenderecesitb.Text == string.Empty))
                 {
                     DataAccess da = new DataAccess();
                     string[] temp = PersonelAdicb.Text.Split(' ');
-                    string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
-                    da.EkleTamirPersoneli( comboBox1.Text,id,  Uzmanliktb.Text);
+                    string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
+                    da.EkleGenelBakimTeknisyeni(comboBox1.Text, id, teknisyenderecesitb.Text);
                     this.Close();
 
                 }
@@ -83,12 +78,12 @@ namespace Bil372ProjeGrup99
             }
             if (onayla.Text == "Düzenle")
             {
-                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(Uzmanliktb.Text == string.Empty))
+                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(teknisyenderecesitb.Text == string.Empty))
                 {
                     DataAccess da = new DataAccess();
                     string[] temp = PersonelAdicb.Text.Split(' ');
-                    string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
-                    da.UpdateTamirPersoneli(comboBox1.Text, id, Uzmanliktb.Text);
+                    string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
+                    da.UpdateGenelBakimTeknisyeni(comboBox1.Text, id, teknisyenderecesitb.Text);
                     this.Close();
 
                 }
@@ -99,13 +94,13 @@ namespace Bil372ProjeGrup99
             }
             if (onayla.Text == "Sil")
             {
-                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(Uzmanliktb.Text == string.Empty))
+                if (!(PersonelAdicb.Text == string.Empty) && !(comboBox1.Text == string.Empty) && !(teknisyenderecesitb.Text == string.Empty))
                 {
                     DataAccess da = new DataAccess();
                     string[] temp = PersonelAdicb.Text.Split(' ');
-                    string id = da.getPersonelIDbyName(temp[0], temp[1]);
+                    string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
                     Console.WriteLine(da.getServisPersonelIDbyPersonelID(id));
-                    da.DeleteTamirPersoneli(da.getServisPersonelIDbyPersonelID(id));
+                    da.DeleteGenelBakimTeknisyeni(da.getServisPersonelIDbyPersonelID(id));
                     this.Close();
 
                 }
@@ -116,29 +111,55 @@ namespace Bil372ProjeGrup99
             }
         }
 
-        private void servispersoneliadicb_SelectedIndexChanged(object sender, EventArgs e)
+        private void PersonelAdicb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (message == "Düzenle")
+            if (message == "Ekle")
             {
                 DataAccess da = new DataAccess();
                 string[] temp = PersonelAdicb.Text.Split(' ');
-                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
-                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
-                foreach (TamirPersoneli sp in TamirPersoneli)
+                string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
+                List<GenelBakimTeknisyeni> GenelBakimTeknisyeni = da.GetGenelBakimTeknisyeni();
+                foreach (GenelBakimTeknisyeni sp in GenelBakimTeknisyeni)
                 {
                     if (sp.PersonelID == id)
                     {
-                        Uzmanliktb.Text= sp.Uzmanlik;
+                        teknisyenderecesitb.Text = sp.TeknisyenDerecesi;
                         comboBox1.Text = sp.ServisPersoneliID;
                     }
                 }
 
                 List<Personel> Personel = new List<Personel>();
-                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                Personel = da.getAtanmamisServisPersoneliAdiGenelBakimTeknisyeni();
                 comboBox1.Items.Clear();
                 for (int i = 0; i < Personel.Count; i++)
                 {
-                    
+
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
+
+
+            }
+            if (message == "Düzenle")
+            {
+                DataAccess da = new DataAccess();
+                string[] temp = PersonelAdicb.Text.Split(' ');
+                string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
+                List<GenelBakimTeknisyeni> GenelBakimTeknisyeni = da.GetGenelBakimTeknisyeni();
+                foreach (GenelBakimTeknisyeni sp in GenelBakimTeknisyeni)
+                {
+                    if (sp.PersonelID == id)
+                    {
+                        teknisyenderecesitb.Text = sp.TeknisyenDerecesi;
+                        comboBox1.Text = sp.ServisPersoneliID;
+                    }
+                }
+
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiGenelBakimTeknisyeni();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
+
                     comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
                 }
 
@@ -149,18 +170,18 @@ namespace Bil372ProjeGrup99
             {
                 DataAccess da = new DataAccess();
                 string[] temp = PersonelAdicb.Text.Split(' ');
-                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
-                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
-                foreach (TamirPersoneli sp in TamirPersoneli)
+                string id = da.getGenelBakimTeknisyeniIDbyName(temp[0], temp[1]);
+                List<GenelBakimTeknisyeni> GenelBakimTeknisyeni = da.GetGenelBakimTeknisyeni();
+                foreach (GenelBakimTeknisyeni sp in GenelBakimTeknisyeni)
                 {
                     if (sp.PersonelID == id)
                     {
-                        Uzmanliktb.Text = sp.Uzmanlik;
+                        teknisyenderecesitb.Text = sp.TeknisyenDerecesi;
                         comboBox1.Text = sp.ServisPersoneliID;
                     }
                 }
                 List<Personel> Personel = new List<Personel>();
-                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                Personel = da.getAtanmamisServisPersoneliAdiGenelBakimTeknisyeni();
                 comboBox1.Items.Clear();
                 for (int i = 0; i < Personel.Count; i++)
                 {
@@ -168,9 +189,8 @@ namespace Bil372ProjeGrup99
                     comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
                 }
                 comboBox1.Enabled = false;
-                Uzmanliktb.Enabled = false;
+                teknisyenderecesitb.Enabled = false;
             }
-            
         }
 
         private void button2_Click(object sender, EventArgs e)

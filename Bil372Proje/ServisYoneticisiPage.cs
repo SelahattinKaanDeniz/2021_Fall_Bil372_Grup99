@@ -53,7 +53,41 @@ namespace Bil372ProjeGrup99
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string yapilanis = comboBox1.Text;
+            switch (yapilanis)
+            {
+                case "Servis":
+                    ServisEkle newscreen = new ServisEkle();
+                    newscreen.ShowDialog();
+                    break;
+                
+            }
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string yapilanis = comboBox1.Text;
+            switch (yapilanis)
+            {
+                case "Servis":
+                    ServisPage newscreen = new ServisPage("Düzenle");
+                    newscreen.ShowDialog();
+                    break;
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string yapilanis = comboBox1.Text;
+            switch (yapilanis)
+            {
+                case "Servis":
+                    ServisPage newscreen = new ServisPage("Sil");
+                    newscreen.ShowDialog();
+                    break;
+
+            }
         }
     }
 }

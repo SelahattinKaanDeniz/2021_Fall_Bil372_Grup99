@@ -134,6 +134,23 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
+        public List<TamirPersoneli> GetTamirPersoneli()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<TamirPersoneli>($"select * from TamirPersoneli  ").ToList();
+                return output;
+            }
+        }
+
+        public List<GenelBakimTeknisyeni> GetGenelBakimTeknisyeni()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<GenelBakimTeknisyeni>($"select * from GenelBakimTeknisyeni  ").ToList();
+                return output;
+            }
+        }
         public List<ServisPersoneli> GetServisPersoneli()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -186,6 +203,27 @@ namespace Bil372ProjeGrup99
 
             }
         }
+        public void UpdateTamirPersoneli(string ServisPersoneliID, string PersonelID, string Uzmanlik)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE TamirPersoneli SET   ServisPersoneliID='" + ServisPersoneliID + "', Uzmanlik='" + Uzmanlik + "' WHERE PersonelID='" + PersonelID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void UpdateGenelBakimTeknisyeni(string ServisPersoneliID, string PersonelID, string TeknisyenDerecesi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE GenelBakimTeknisyeni SET   ServisPersoneliID='" + ServisPersoneliID + "', TeknisyenDerecesi='" + TeknisyenDerecesi + "' WHERE PersonelID='" + PersonelID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
 
         public void DeleteUcak(string ucakID)
         {
@@ -221,11 +259,56 @@ namespace Bil372ProjeGrup99
                 
             }
         }
+        public void EkleTamirPersoneli(string ServisPersoneliID, string PersonelID, string Uzmanlik)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO TamirPersoneli  Values (@ServisPersoneliID, @PersonelID , @Uzmanlik );";
+
+                TamirPersoneli sp = new TamirPersoneli { ServisPersoneliID = ServisPersoneliID, PersonelID = PersonelID, Uzmanlik = Uzmanlik };
+                connection.Execute(sql, sp);
+
+            }
+        }
+
+        public void EkleGenelBakimTeknisyeni(string ServisPersoneliID, string PersonelID, string TeknisyenDerecesi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO GenelBakimTeknisyeni  Values (@ServisPersoneliID, @PersonelID , @TeknisyenDerecesi );";
+
+                GenelBakimTeknisyeni sp = new GenelBakimTeknisyeni { ServisPersoneliID = ServisPersoneliID, PersonelID = PersonelID, TeknisyenDerecesi = TeknisyenDerecesi };
+                connection.Execute(sql, sp);
+
+            }
+        }
         public void DeleteServisPersoneli(string ServisPersoneliID)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
                 string querystr = "DELETE FROM ServisPersoneli WHERE ServisPersoneliID='" + ServisPersoneliID + "'";
+                connection.Execute(querystr);
+
+
+            }
+        }
+
+        public void DeleteTamirPersoneli(string ServisPersoneliID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM TamirPersoneli WHERE ServisPersoneliID='" + ServisPersoneliID + "'";
+                connection.Execute(querystr);
+
+
+            }
+        }
+
+        public void DeleteGenelBakimTeknisyeni(string ServisPersoneliID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM GenelBakimTeknisyeni WHERE ServisPersoneliID='" + ServisPersoneliID + "'";
                 connection.Execute(querystr);
 
 
@@ -253,6 +336,16 @@ namespace Bil372ProjeGrup99
                 return output[0].PersonelID;
             }
         }
+
+        public String getGenelBakimTeknisyeniIDbyName(string Ad, string Soyad)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select PersonelID from Personel where Personel.Ad='{Ad}' and Personel.Soyad='{Soyad}' ").ToList();
+
+                return output[0].PersonelID;
+            }
+        }
         public List<Personel> getAtanmamisPersonelAdiMurettebat()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
@@ -261,13 +354,39 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
-
+        
         public List<Personel> getAtanmisPersonelAdiMurettebat()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
                 var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID from Personel,Murettebat where Murettebat.PersonelID=Personel.PersonelID").ToList();
                 return output;
+            }
+        }
+
+        public List<Personel> getAtanmamisServisPersoneliAdiTamirPersoneli()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($" select  * from personel where Personel.PersonelID IN(select  ServisPersoneli.PersonelID from ServisPersoneli where not exists(select TamirPersoneli.PersonelID from TamirPersoneli where TamirPersoneli.PersonelID = ServisPersoneli.PersonelID) and not exists(select GenelBakimTeknisyeni.PersonelID from GenelBakimTeknisyeni where GenelBakimTeknisyeni.PersonelID = ServisPersoneli.PersonelID) and ServisPersonelTipi = 'Tamir')").ToList();
+                return output;
+            }
+        }
+        public List<Personel> getAtanmamisServisPersoneliAdiGenelBakimTeknisyeni()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($" select  * from personel where Personel.PersonelID IN(select  ServisPersoneli.PersonelID from ServisPersoneli where not exists(select TamirPersoneli.PersonelID from TamirPersoneli where TamirPersoneli.PersonelID = ServisPersoneli.PersonelID) and not exists(select GenelBakimTeknisyeni.PersonelID from GenelBakimTeknisyeni where GenelBakimTeknisyeni.PersonelID = ServisPersoneli.PersonelID) and ServisPersonelTipi = 'Bakim')").ToList();
+                return output;
+            }
+        }
+
+        public string getServisPersonelIDbyPersonelID(string PersonelID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<ServisPersoneli>($" select  * from ServisPersoneli where ServisPersoneli.PersonelID='{PersonelID}'").ToList();
+                return output[0].ServisPersoneliID;
             }
         }
 

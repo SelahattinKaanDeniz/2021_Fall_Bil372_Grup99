@@ -79,6 +79,12 @@
     <Compile Include="DataAccess.cs" />
     <Compile Include="GenelBakim.cs" />
     <Compile Include="GenelBakimTeknisyeni.cs" />
+    <Compile Include="GenelBakimTeknisyeniPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenelBakimTeknisyeniPage.Designer.cs">
+      <DependentUpon>GenelBakimTeknisyeniPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="KabinMemuru.cs" />
     <Compile Include="Kullanici.cs" />
     <Compile Include="KullaniciGirisi.cs">
@@ -119,6 +125,18 @@
       <DependentUpon>SeferYoneticisiPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Servis.cs" />
+    <Compile Include="ServisEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServisEkle.Designer.cs">
+      <DependentUpon>ServisEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServisPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServisPage.Designer.cs">
+      <DependentUpon>ServisPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServisPersoneli.cs" />
     <Compile Include="ServisPersoneliPage.cs">
       <SubType>Form</SubType>
@@ -156,6 +174,9 @@
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GenelBakimTeknisyeniPage.resx">
+      <DependentUpon>GenelBakimTeknisyeniPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KullaniciGirisi.resx">
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +201,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SeferYoneticisiPage.resx">
       <DependentUpon>SeferYoneticisiPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServisEkle.resx">
+      <DependentUpon>ServisEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServisPage.resx">
+      <DependentUpon>ServisPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServisPersoneliPage.resx">
       <DependentUpon>ServisPersoneliPage.cs</DependentUpon>

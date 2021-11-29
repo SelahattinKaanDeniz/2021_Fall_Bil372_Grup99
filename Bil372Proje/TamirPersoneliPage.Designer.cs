@@ -35,16 +35,18 @@ namespace Bil372ProjeGrup99
             this.Uzmanliktb = new System.Windows.Forms.TextBox();
             this.onayla = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // PersonelAdicb
             // 
             this.PersonelAdicb.FormattingEnabled = true;
-            this.PersonelAdicb.Location = new System.Drawing.Point(136, 57);
+            this.PersonelAdicb.Location = new System.Drawing.Point(164, 57);
             this.PersonelAdicb.Name = "PersonelAdicb";
             this.PersonelAdicb.Size = new System.Drawing.Size(121, 24);
             this.PersonelAdicb.TabIndex = 0;
-            this.PersonelAdicb.SelectedIndexChanged += new System.EventHandler(this.PersonelAdicb_SelectedIndexChanged);
+            this.PersonelAdicb.SelectedIndexChanged += new System.EventHandler(this.servispersoneliadicb_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -66,7 +68,7 @@ namespace Bil372ProjeGrup99
             // 
             // Uzmanliktb
             // 
-            this.Uzmanliktb.Location = new System.Drawing.Point(136, 122);
+            this.Uzmanliktb.Location = new System.Drawing.Point(164, 120);
             this.Uzmanliktb.Name = "Uzmanliktb";
             this.Uzmanliktb.Size = new System.Drawing.Size(121, 22);
             this.Uzmanliktb.TabIndex = 3;
@@ -91,11 +93,30 @@ namespace Bil372ProjeGrup99
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Servis Personel ID";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(164, 90);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 7;
+            // 
             // TamirPersoneliPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 250);
+            this.ClientSize = new System.Drawing.Size(323, 255);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.onayla);
             this.Controls.Add(this.Uzmanliktb);
@@ -117,5 +138,7 @@ namespace Bil372ProjeGrup99
         private System.Windows.Forms.TextBox Uzmanliktb;
         private System.Windows.Forms.Button onayla;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
