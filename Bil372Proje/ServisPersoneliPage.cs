@@ -165,6 +165,7 @@ namespace Bil372ProjeGrup99
                         servispersonelspid.Text = sp.ServisPersoneliID;
                     }
                 }
+                servispersonelspid.Enabled = false;
             }
 
             if (message == "Sil")
