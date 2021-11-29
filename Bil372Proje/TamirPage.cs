@@ -15,8 +15,8 @@ namespace Bil372ProjeGrup99
         String message;
         public TamirPage(String m)
         {
-            message = m;
             InitializeComponent();
+            message = m;
             DataAccess da = new DataAccess();
             if (m == "Ekle")
             {
@@ -28,7 +28,7 @@ namespace Bil372ProjeGrup99
             }
             if (m == "Düzenle")
             {
-                ; List<Tamir> genelbakimlist = da.GetTamir();
+                List<Tamir> genelbakimlist = da.GetTamir();
                 foreach (Tamir x in genelbakimlist)
                 {
                     ServisIDcb.Items.Add(x.ServisID);
@@ -38,6 +38,11 @@ namespace Bil372ProjeGrup99
             foreach (TamirPersoneli x in personel)
             {
                 PersonelIDcb.Items.Add(x.PersonelID);
+            }
+            List<Ucak> ucak = da.GetUcak();
+            foreach (Ucak x in ucak)
+            {
+                UcakIDcb.Items.Add(x.UcakID);
             }
             if (message=="Düzenle")
             {

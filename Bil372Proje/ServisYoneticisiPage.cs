@@ -21,7 +21,7 @@ namespace Bil372ProjeGrup99
             comboBox1.Items.Add("Tamir");
             comboBox1.Items.Add("GenelBakim");
             listView1.View = View.Details;
-            listView1.Columns.Add("Servisler");
+            listView1.Columns.Add("Servisler",290);
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;

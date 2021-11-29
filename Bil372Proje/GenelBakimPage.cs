@@ -26,7 +26,7 @@ namespace Bil372ProjeGrup99
                     ServisIDcb.Items.Add(x.ServisID);
                 }
             }
-            if (m == "Düzenle")
+            else if (m == "Düzenle")
             {
 ;                List<GenelBakim> genelbakimlist= da.GetGenelBakim();
                 foreach (GenelBakim x in genelbakimlist)
@@ -50,7 +50,7 @@ namespace Bil372ProjeGrup99
                 UcakIDcb.Enabled = false;
                 BakimTurutb.Enabled = false;
             }
-            if (m == "Sil")
+            else if (m == "Sil")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
