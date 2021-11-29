@@ -38,7 +38,7 @@ namespace Bil372ProjeGrup99
         {
             if (ServisIDcb.Text != null)
             {
-                if(message == "Duzenle")
+                if(message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateServis(ServisIDcb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipitb.Text);
@@ -53,7 +53,7 @@ namespace Bil372ProjeGrup99
 
         private void ServisIDcb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (message == "Duzenle")
+            if (message == "Düzenle")
             {
                 UcakIDcb.Enabled = true;
                 ServisTipitb.Enabled = true;
@@ -66,7 +66,7 @@ namespace Bil372ProjeGrup99
                     if (x.ServisID == ServisIDcb.Text)
                     {
                         UcakIDcb.Text = x.UcakID;
-                        ServisIDcb.Text = x.ServisTipi;
+                        ServisTipitb.Text = x.ServisTipi;
                         BaslangicTarihi.Value = x.BaslangicTarihi;
                         BitisTarihi.Value = x.BitisTarihi;
 
@@ -82,7 +82,7 @@ namespace Bil372ProjeGrup99
                     if (x.ServisID == ServisIDcb.Text)
                     {
                         UcakIDcb.Text = x.UcakID;
-                        ServisIDcb.Text = x.ServisTipi;
+                        ServisTipitb.Text = x.ServisTipi;
                         BaslangicTarihi.Value = x.BaslangicTarihi;
                         BitisTarihi.Value = x.BitisTarihi;
 

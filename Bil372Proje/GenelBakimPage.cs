@@ -34,7 +34,7 @@ namespace Bil372ProjeGrup99
             {
                 UcakIDcb.Items.Add(x.UcakID);
             }
-            if (m == "Duzenle")
+            if (m == "Düzenle")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
@@ -62,7 +62,7 @@ namespace Bil372ProjeGrup99
                     DataAccess da = new DataAccess();
                     da.InsertGenelBakim(ServisIDcb.Text, UcakIDcb.Text, PersonelIDcb.Text, BakimTurutb.Text);
                 }
-                else if (message == "Duzenle")
+                else if (message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateGenelBakim(ServisIDcb.Text, BakimTurutb.Text);
@@ -77,7 +77,7 @@ namespace Bil372ProjeGrup99
 
         private void ServisIDcb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (message == "Duzenle")
+            if (message == "Düzenle")
             {
                 DataAccess da = new DataAccess();
                 List<GenelBakim> bakim = da.GetGenelBakim();

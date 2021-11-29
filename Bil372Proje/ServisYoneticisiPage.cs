@@ -78,15 +78,15 @@ namespace Bil372ProjeGrup99
             switch (yapilanis)
             {
                 case "Servis":
-                    ServisPage newscreen = new ServisPage("Duzenle");
+                    ServisPage newscreen = new ServisPage("Düzenle");
                     newscreen.ShowDialog();
                     break;
                 case "Tamir":
-                    TamirPage newscreen1 = new TamirPage("Duzenle");
+                    TamirPage newscreen1 = new TamirPage("Düzenle");
                     newscreen1.ShowDialog();
                     break;
                 case "GenelBakim":
-                    GenelBakimPage newscreen2 = new GenelBakimPage("Duzenle");
+                    GenelBakimPage newscreen2 = new GenelBakimPage("Düzenle");
                     newscreen2.ShowDialog();
                     break;
 

@@ -33,7 +33,7 @@ namespace Bil372ProjeGrup99
             {
                 UcakIDcb.Items.Add(x.UcakID);
             }
-            if(message=="Duzenle")
+            if(message=="Düzenle")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
@@ -65,7 +65,7 @@ namespace Bil372ProjeGrup99
                     DataAccess da = new DataAccess();
                     da.InsertTamir(ServisIDcb.Text, UcakIDcb.Text, PersonelIDcb.Text, KazaTarihi.Value, KazaSebebitb.Text, TamirSonucutb.Text);
                 }
-                else if (message == "Duzenle")
+                else if (message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateTamir(ServisIDcb.Text, KazaTarihi.Value, KazaSebebitb.Text, TamirSonucutb.Text);
@@ -86,7 +86,7 @@ namespace Bil372ProjeGrup99
 
         private void ServisIDcb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (message == "Duzenle")
+            if (message == "Düzenle")
             {
                 DataAccess da = new DataAccess();
                 List<Tamir> tamir = da.GetTamir();
