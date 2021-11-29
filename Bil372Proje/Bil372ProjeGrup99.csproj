@@ -78,6 +78,12 @@
     <Compile Include="Aescoding.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="GenelBakim.cs" />
+    <Compile Include="GenelBakimPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenelBakimPage.Designer.cs">
+      <DependentUpon>GenelBakimPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenelBakimTeknisyeni.cs" />
     <Compile Include="GenelBakimTeknisyeniPage.cs">
       <SubType>Form</SubType>
@@ -177,6 +183,9 @@
     </Compile>
     <EmbeddedResource Include="AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenelBakimPage.resx">
+      <DependentUpon>GenelBakimPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenelBakimTeknisyeniPage.resx">
       <DependentUpon>GenelBakimTeknisyeniPage.cs</DependentUpon>

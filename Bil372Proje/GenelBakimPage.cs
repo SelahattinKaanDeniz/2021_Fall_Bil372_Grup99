@@ -36,13 +36,13 @@ namespace Bil372ProjeGrup99
             }
             if (message == "Duzenle")
             {
-                ServisIDcb.Enabled = false;
+                PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
                 BakimTurutb.Enabled = false;
             }
             if (message == "Sil")
             {
-                ServisIDcb.Enabled = false;
+                PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
                 BakimTurutb.Enabled = false;
             }
@@ -107,6 +107,11 @@ namespace Bil372ProjeGrup99
                     }
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
