@@ -92,6 +92,12 @@
       <DependentUpon>GenelBakimTeknisyeniPage.cs</DependentUpon>
     </Compile>
     <Compile Include="KabinMemuru.cs" />
+    <Compile Include="KabinMemuruPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KabinMemuruPage.Designer.cs">
+      <DependentUpon>KabinMemuruPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kullanici.cs" />
     <Compile Include="KullaniciGirisi.cs">
       <SubType>Form</SubType>
@@ -108,7 +114,25 @@
       <DependentUpon>MurettebatPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Personel.cs" />
+    <Compile Include="PersonelEklePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelEklePage.Designer.cs">
+      <DependentUpon>PersonelEklePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelPage.Designer.cs">
+      <DependentUpon>PersonelPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pilot.cs" />
+    <Compile Include="PilotPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PilotPage.Designer.cs">
+      <DependentUpon>PilotPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sefer.cs" />
@@ -190,11 +214,23 @@
     <EmbeddedResource Include="GenelBakimTeknisyeniPage.resx">
       <DependentUpon>GenelBakimTeknisyeniPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="KabinMemuruPage.resx">
+      <DependentUpon>KabinMemuruPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KullaniciGirisi.resx">
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MurettebatPage.resx">
       <DependentUpon>MurettebatPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelEklePage.resx">
+      <DependentUpon>PersonelEklePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelPage.resx">
+      <DependentUpon>PersonelPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PilotPage.resx">
+      <DependentUpon>PilotPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

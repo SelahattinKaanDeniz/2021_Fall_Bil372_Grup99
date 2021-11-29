@@ -47,6 +47,8 @@ namespace Bil372ProjeGrup99
                 return output[0].KullaniciTipi;
             }
         }
+        
+
 
 
         public List<String> GetTableNames()
@@ -466,7 +468,8 @@ namespace Bil372ProjeGrup99
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
-                string querystr = "UPDATE Sefer SET UcakID='" + ucakid + "', UcusSuresi='" + ucussuresi + "', SeferTarihi='" + SeferTarihi + "', VarisZamani='" + variszamani + "', KalkisZamani='" + kalkiszamani + "', VarisYeri='" + varisyeri + "', KalkisYeri='" + kalkisyeri + "' WHERE SeferID='" + seferid + "'";
+                string querystr = "UPDATE Sefer SET UcakID='" + ucakid + "', UcusSuresi='" + ucussuresi + "', SeferTarihi='" + SeferTarihi + "', VarisZamani='" + 
+                    variszamani + "', KalkisZamani='" + kalkiszamani + "', VarisYeri='" + varisyeri + "', KalkisYeri='" + kalkisyeri + "' WHERE SeferID='" + seferid + "'";
 
                 connection.Execute(querystr);
             }
@@ -500,7 +503,7 @@ namespace Bil372ProjeGrup99
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
-                string sql = "INSERT INTO Murettebat (MurettebatID, UcakID, PersonelID,YabanciDil, UcusSuresi, MurettebatTipi) Values (@murettebatID, @ucakID , @personelID , @yabanciDil , @ucusSuresi , @murettebatTipi );";
+                string sql = "INSERT INTO Murettebat (MurettebatID, UcakID, PersonelID,YabanciDil, UcusSuresi, MurettebatTipi) Values (@MurettebatID, @UcakID , @PersonelID , @YabanciDil , @UcusSuresi , @MurettebatTipi );";
 
                 Murettebat murettebat = new Murettebat { MurettebatID = murettebatID, UcakID = ucakID, PersonelID = personelID, YabanciDil = yabanciDil, UcusSuresi = ucusSuresi, MurettebatTipi = murettebatTipi };
                 connection.Execute(sql, murettebat);
@@ -508,6 +511,169 @@ namespace Bil372ProjeGrup99
 
             }
         }
+
+        public List<Personel> getAtanmamisMurettebatAdiPilot()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select  Ad, soyad, PersonelID from personel where Personel.PersonelID IN(select  Murettebat.PersonelID from Murettebat where not exists(select Pilot.PersonelID from Pilot where Pilot.PersonelID = Murettebat.PersonelID ) and not exists(select KabinMemuru.PersonelID from KabinMemuru where KabinMemuru.PersonelID = Murettebat.PersonelID) and MurettebatTipi = 'Pilot')").ToList();
+                return output;
+            }
+        }
+
+        public List<Personel> getAtanmisMurettebatAdiPilot()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID from Personel,Pilot where Personel.PersonelID=Pilot.PersonelID").ToList();
+                return output;
+            }
+        }
+        public List<Pilot> getPilot(string ID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Pilot>($"select * from Pilot where Pilot.PersonelID='" + ID + "' ").ToList();
+
+                return output;
+
+            }
+        }
+        public void UpdatePilot(string murettebatID, string ucakID, string personelID, string lisansTuru, string pilotRolu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Pilot SET LisansTuru='" + lisansTuru + "', PilotRolu='" + pilotRolu + "' WHERE MurettebatID='" + murettebatID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void DeletePilot(string murettebatID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Pilot WHERE MurettebatID='" + murettebatID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void EklePilot(string murettebatID, string ucakID, string personelID, string lisansTuru, string pilotRolu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO Pilot (MurettebatID, UcakID, PersonelID,LisansTuru, PilotRolu) Values (@MurettebatID, @UcakID , @PersonelID , @LisansTuru , @PilotRolu);";
+
+                Pilot pilot = new Pilot { MurettebatID = murettebatID, UcakID = ucakID, PersonelID = personelID, LisansTuru = lisansTuru, PilotRolu = pilotRolu};
+                connection.Execute(sql, pilot);
+
+
+            }
+        }
+
+        public List<Personel> getAtanmamisMurettebatAdiKabinMemuru()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select  Ad, soyad, PersonelID from personel where Personel.PersonelID IN(select  Murettebat.PersonelID from Murettebat where not exists(select Pilot.PersonelID from Pilot where Pilot.PersonelID = Murettebat.PersonelID ) and not exists(select KabinMemuru.PersonelID from KabinMemuru where KabinMemuru.PersonelID = Murettebat.PersonelID) and MurettebatTipi = 'Kabin Memuru')").ToList();
+                return output;
+            }
+        }
+
+        public List<Personel> getAtanmisMurettebatAdiKabinMemuru()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Personel>($"select Ad, Soyad,Personel.PersonelID from Personel,KabinMemuru where Personel.PersonelID=KabinMemuru.PersonelID").ToList();
+                return output;
+            }
+        }
+
+        public List<KabinMemuru> getKabinMemuru(string ID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<KabinMemuru>($"select * from KabinMemuru where KabinMemuru.PersonelID='" + ID + "' ").ToList();
+
+                return output;
+
+            }
+        }
+        public void UpdateKabinMemuru(string murettebatID, string ucakID, string personelID, string medenidurumu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE KabinMemuru SET MedeniDurumu='" + medenidurumu + "' WHERE MurettebatID='" + murettebatID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void DeleteKabinMemuru(string murettebatID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM KabinMemuru WHERE MurettebatID='" + murettebatID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void EkleKabinMemuru(string murettebatID, string ucakID, string personelID, string medeniDurumu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO KabinMemuru (MurettebatID, UcakID, PersonelID,MedeniDurumu) Values (@MurettebatID, @UcakID , @PersonelID , @MedeniDurumu);";
+
+                KabinMemuru kabinMemuru = new KabinMemuru { MurettebatID = murettebatID, UcakID = ucakID, PersonelID = personelID, MedeniDurumu = medeniDurumu };
+                connection.Execute(sql, kabinMemuru);
+
+
+            }
+        }
+
+
+
+        public void UpdatePersonel(string personelID, string cinsiyet, string maas, DateTime dogumTarihi, string ad, string soyad
+           , string egitim, string tcno, string sgn, DateTime iseAlimTarihi, string telefonno, string adres, string eposta, string personelTipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Personel SET Cinsiyet='" + cinsiyet + "', Maas='" + maas + "', DogumTarihi='" + dogumTarihi + "', Ad='" + ad + "', Soyad='" + soyad + "', Egitim='" + egitim + "', TCNO='" + tcno + "', SGN='" + sgn + "', IseAlimTarihi='" + iseAlimTarihi + "', TelefonNO='" + telefonno + "', Adres='" + adres + "', Eposta='" + eposta + "', PersonelTipi='" + personelTipi + "' WHERE PersonelID='" + personelID + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void DeletePersonel(string PersonelID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Personel WHERE PersonelID='" + PersonelID + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+
+        public void EklePersonel(string personelID, string cinsiyet, string maas, DateTime dogumTarihi, string ad, string soyad
+           , string egitim, string tcno, string sgn, DateTime iseAlimTarihi, string telefonno, string adres, string eposta, string personelTipi)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string sql = "INSERT INTO Personel (PersonelID, Cinsiyet, Maas,DogumTarihi, Ad, Soyad,Egitim,TCNO,SGN,IseAlimTarihi,TelefonNo,Adres,Eposta,PersonelTipi) Values (@personelID, @cinsiyet , @maas , @dogumTarihi , @ad , @soyad , @egitim , @tcno , @sgn , @IseAlimTarihi , @telefonno , @adres , @eposta , @personelTipi );";
+
+                Personel personel = new Personel { PersonelID = personelID, Cinsiyet = cinsiyet, Maas = maas, DogumTarihi = dogumTarihi, Ad = ad, Soyad = soyad, Egitim= egitim, TCNO = tcno, SGN=sgn, IseAlimTarihi=iseAlimTarihi,TelefonNO=telefonno,Adres=adres,EPosta=eposta,PersonelTipi=personelTipi };
+                connection.Execute(sql, personel);
+
+
+            }
+        }
+
+     
         public List<Servis> GetServis()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))

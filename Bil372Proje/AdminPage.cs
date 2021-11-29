@@ -62,24 +62,24 @@ namespace Bil372ProjeGrup99
             {
 
 
-                /* case "Personel":
-                     PersonelPage f1 = new PersonelPage();
-                     f1.ShowDialog();
-                     break;
-                 case "Kullanici":
+                 case "Personel":
+                    if (islem == "Düzenle" || islem == "Sil")
+                    {
+                        PersonelPage f1 = new PersonelPage(islem);
+                        f1.ShowDialog();
+                        break;
+                    }
+                    else
+                    {
+                        PersonelEklePage f15 = new PersonelEklePage(islem);
+                        f15.ShowDialog();
+                        break;
+                    }
+                 /*case "Kullanici":
                      KullaniciPage f2 = new KullaniciPage();
                      f2.ShowDialog();
                      break;*/
-
-                /*
-                case "Personel":
-                    PersonelPage f1 = new PersonelPage();
-                    f1.ShowDialog();
-                    break;
-                case "Kullanici":
-                    KullaniciPage f2 = new KullaniciPage();
-                    f2.ShowDialog();
-                    break;
+           
 
                 case "Ucak":
                     if (islem == "Düzenle" || islem == "Sil")
@@ -99,31 +99,49 @@ namespace Bil372ProjeGrup99
                     MurettebatPage f4 = new MurettebatPage(islem);
                     f4.ShowDialog();
                     break;
-               /* case "Pilot":
-                    PilotPage f5 = new PilotPage();
+                case "Pilot":
+                    PilotPage f5 = new PilotPage(islem);
                     f5.ShowDialog();
                     break;
                 case "KabinMemuru":
-                    KabinMemuruPage f6 = new KabinMemuruPage();
+                    KabinMemuruPage f6 = new KabinMemuruPage(islem);
                     f6.ShowDialog();
                     break;
                 case "Sefer":
-                    SeferPage f7 = new SeferPage();
-                    f7.ShowDialog();
-                    break;
+                    if (islem == "Düzenle" || islem == "Sil")
+                    {
+                        SeferPage f7 = new SeferPage(islem);
+                        f7.ShowDialog();
+                        break;
+                    }
+                    else
+                    {
+                        SeferEkle f7 = new SeferEkle();
+                        f7.ShowDialog();
+                        break;
+                    }
                 case "Servis":
-                    ServisPage f8 = new ServisPage();
-                    f8.ShowDialog();
-                    break;
+                    if (islem == "Düzenle" || islem == "Sil")
+                    {
+                        ServisPage f8 = new ServisPage(islem);
+                        f8.ShowDialog();
+                        break;
+                    }
+                    else
+                    {
+                        ServisEkle f8 = new ServisEkle();
+                        f8.ShowDialog();
+                        break;
+                    }
                 case "GenelBakim":
-                    GenelBakimPage f9 = new GenelBakimPage();
+                    GenelBakimPage f9 = new GenelBakimPage(islem);
                     f9.ShowDialog();
                     break;
                 case "Tamir":
-                    TamirPage f10 = new TamirPage();
+                    TamirPage f10 = new TamirPage(islem);
                     f10.ShowDialog();
                     break;
-                */case "TamirPersoneli":
+                case "TamirPersoneli":
                     TamirPersoneliPage f11 = new TamirPersoneliPage(islem);
                     f11.ShowDialog();
                     break;
@@ -137,14 +155,12 @@ namespace Bil372ProjeGrup99
                     f13.ShowDialog();
                     break;
                 default:
-
-                   // GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
-                   // f13.ShowDialog();
                     break;
 
-                    /*GenelBakimTeknisyeniPage f13 = new GenelBakimTeknisyeniPage();
-                    f13.ShowDialog();
-                    break;*/
+
+                  
+
+                    
 
             }
                    

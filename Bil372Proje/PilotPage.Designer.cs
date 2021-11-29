@@ -1,7 +1,7 @@
 ﻿
 namespace Bil372ProjeGrup99
 {
-    partial class MurettebatPage
+    partial class PilotPage
     {
         /// <summary>
         /// Required designer variable.
@@ -38,74 +38,72 @@ namespace Bil372ProjeGrup99
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.AdSoyadComboBox = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.UcakIDComboBox = new System.Windows.Forms.ComboBox();
             this.MurettebatIDTextBox = new System.Windows.Forms.TextBox();
             this.PersonelIDTextBox = new System.Windows.Forms.TextBox();
-            this.UcusSüresiTextBox = new System.Windows.Forms.TextBox();
-            this.YabanciDilTextBox = new System.Windows.Forms.TextBox();
-            this.UcakIDComboBox = new System.Windows.Forms.ComboBox();
-            this.MurettebatTipiComboBox = new System.Windows.Forms.ComboBox();
+            this.LisansTuruTextBox = new System.Windows.Forms.TextBox();
+            this.PilotRoluTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 134);
+            this.label1.Location = new System.Drawing.Point(12, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 17);
+            this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mürettebat ID:";
+            this.label1.Text = "Ad Soyad:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 199);
+            this.label2.Location = new System.Drawing.Point(12, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(97, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Uçak ID:";
+            this.label2.Text = "Mürettebat ID:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 262);
+            this.label3.Location = new System.Drawing.Point(12, 194);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 17);
+            this.label3.Size = new System.Drawing.Size(61, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Personel ID:";
+            this.label3.Text = "Uçak ID:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(347, 64);
+            this.label4.Location = new System.Drawing.Point(332, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 17);
+            this.label4.Size = new System.Drawing.Size(85, 17);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Yabancı Dil:";
+            this.label4.Text = "Personel ID:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(347, 134);
+            this.label5.Location = new System.Drawing.Point(332, 123);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 17);
+            this.label5.Size = new System.Drawing.Size(87, 17);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Uçuş Süresi:";
+            this.label5.Text = "Lisans Türü:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(345, 199);
+            this.label6.Location = new System.Drawing.Point(332, 194);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 17);
+            this.label6.Size = new System.Drawing.Size(72, 17);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Mürettebat Tipi:";
+            this.label6.Text = "Pilot Rolü:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(192, 366);
+            this.button1.Location = new System.Drawing.Point(191, 294);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.Size = new System.Drawing.Size(97, 33);
             this.button1.TabIndex = 6;
             this.button1.Text = "Kaydet";
             this.button1.UseVisualStyleBackColor = true;
@@ -113,9 +111,9 @@ namespace Bil372ProjeGrup99
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(377, 366);
+            this.button2.Location = new System.Drawing.Point(354, 294);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 33);
+            this.button2.Size = new System.Drawing.Size(97, 33);
             this.button2.TabIndex = 7;
             this.button2.Text = "Geri";
             this.button2.UseVisualStyleBackColor = true;
@@ -124,77 +122,58 @@ namespace Bil372ProjeGrup99
             // AdSoyadComboBox
             // 
             this.AdSoyadComboBox.FormattingEnabled = true;
-            this.AdSoyadComboBox.Location = new System.Drawing.Point(151, 57);
+            this.AdSoyadComboBox.Location = new System.Drawing.Point(114, 50);
             this.AdSoyadComboBox.Name = "AdSoyadComboBox";
-            this.AdSoyadComboBox.Size = new System.Drawing.Size(166, 24);
+            this.AdSoyadComboBox.Size = new System.Drawing.Size(174, 24);
             this.AdSoyadComboBox.TabIndex = 8;
             this.AdSoyadComboBox.SelectedIndexChanged += new System.EventHandler(this.AdSoyadComboBox_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 64);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 17);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Ad Soyad";
-            // 
-            // MurettebatIDTextBox
-            // 
-            this.MurettebatIDTextBox.Location = new System.Drawing.Point(151, 134);
-            this.MurettebatIDTextBox.Name = "MurettebatIDTextBox";
-            this.MurettebatIDTextBox.Size = new System.Drawing.Size(166, 22);
-            this.MurettebatIDTextBox.TabIndex = 10;
-            // 
-            // PersonelIDTextBox
-            // 
-            this.PersonelIDTextBox.Location = new System.Drawing.Point(151, 262);
-            this.PersonelIDTextBox.Name = "PersonelIDTextBox";
-            this.PersonelIDTextBox.Size = new System.Drawing.Size(166, 22);
-            this.PersonelIDTextBox.TabIndex = 12;
-            // 
-            // UcusSüresiTextBox
-            // 
-            this.UcusSüresiTextBox.Location = new System.Drawing.Point(458, 134);
-            this.UcusSüresiTextBox.Name = "UcusSüresiTextBox";
-            this.UcusSüresiTextBox.Size = new System.Drawing.Size(166, 22);
-            this.UcusSüresiTextBox.TabIndex = 13;
-            // 
-            // YabanciDilTextBox
-            // 
-            this.YabanciDilTextBox.Location = new System.Drawing.Point(458, 59);
-            this.YabanciDilTextBox.Name = "YabanciDilTextBox";
-            this.YabanciDilTextBox.Size = new System.Drawing.Size(166, 22);
-            this.YabanciDilTextBox.TabIndex = 14;
             // 
             // UcakIDComboBox
             // 
             this.UcakIDComboBox.FormattingEnabled = true;
-            this.UcakIDComboBox.Location = new System.Drawing.Point(151, 199);
+            this.UcakIDComboBox.Location = new System.Drawing.Point(114, 191);
             this.UcakIDComboBox.Name = "UcakIDComboBox";
-            this.UcakIDComboBox.Size = new System.Drawing.Size(166, 24);
-            this.UcakIDComboBox.TabIndex = 16;
+            this.UcakIDComboBox.Size = new System.Drawing.Size(174, 24);
+            this.UcakIDComboBox.TabIndex = 9;
             // 
-            // MurettebatTipiComboBox
+            // MurettebatIDTextBox
             // 
-            this.MurettebatTipiComboBox.FormattingEnabled = true;
-            this.MurettebatTipiComboBox.Location = new System.Drawing.Point(458, 199);
-            this.MurettebatTipiComboBox.Name = "MurettebatTipiComboBox";
-            this.MurettebatTipiComboBox.Size = new System.Drawing.Size(166, 24);
-            this.MurettebatTipiComboBox.TabIndex = 17;
+            this.MurettebatIDTextBox.Location = new System.Drawing.Point(114, 120);
+            this.MurettebatIDTextBox.Name = "MurettebatIDTextBox";
+            this.MurettebatIDTextBox.Size = new System.Drawing.Size(174, 22);
+            this.MurettebatIDTextBox.TabIndex = 10;
             // 
-            // MurettebatPage
+            // PersonelIDTextBox
+            // 
+            this.PersonelIDTextBox.Location = new System.Drawing.Point(423, 50);
+            this.PersonelIDTextBox.Name = "PersonelIDTextBox";
+            this.PersonelIDTextBox.Size = new System.Drawing.Size(174, 22);
+            this.PersonelIDTextBox.TabIndex = 11;
+            // 
+            // LisansTuruTextBox
+            // 
+            this.LisansTuruTextBox.Location = new System.Drawing.Point(423, 123);
+            this.LisansTuruTextBox.Name = "LisansTuruTextBox";
+            this.LisansTuruTextBox.Size = new System.Drawing.Size(174, 22);
+            this.LisansTuruTextBox.TabIndex = 12;
+            // 
+            // PilotRoluTextBox
+            // 
+            this.PilotRoluTextBox.Location = new System.Drawing.Point(423, 191);
+            this.PilotRoluTextBox.Name = "PilotRoluTextBox";
+            this.PilotRoluTextBox.Size = new System.Drawing.Size(174, 22);
+            this.PilotRoluTextBox.TabIndex = 13;
+            // 
+            // PilotPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 450);
-            this.Controls.Add(this.MurettebatTipiComboBox);
-            this.Controls.Add(this.UcakIDComboBox);
-            this.Controls.Add(this.YabanciDilTextBox);
-            this.Controls.Add(this.UcusSüresiTextBox);
+            this.ClientSize = new System.Drawing.Size(617, 368);
+            this.Controls.Add(this.PilotRoluTextBox);
+            this.Controls.Add(this.LisansTuruTextBox);
             this.Controls.Add(this.PersonelIDTextBox);
             this.Controls.Add(this.MurettebatIDTextBox);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.UcakIDComboBox);
             this.Controls.Add(this.AdSoyadComboBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -204,8 +183,8 @@ namespace Bil372ProjeGrup99
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "MurettebatPage";
-            this.Text = "MurettebatPage";
+            this.Name = "PilotPage";
+            this.Text = "PilotPage";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,12 +201,10 @@ namespace Bil372ProjeGrup99
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox AdSoyadComboBox;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox UcakIDComboBox;
         private System.Windows.Forms.TextBox MurettebatIDTextBox;
         private System.Windows.Forms.TextBox PersonelIDTextBox;
-        private System.Windows.Forms.TextBox UcusSüresiTextBox;
-        private System.Windows.Forms.TextBox YabanciDilTextBox;
-        private System.Windows.Forms.ComboBox UcakIDComboBox;
-        private System.Windows.Forms.ComboBox MurettebatTipiComboBox;
+        private System.Windows.Forms.TextBox LisansTuruTextBox;
+        private System.Windows.Forms.TextBox PilotRoluTextBox;
     }
 }

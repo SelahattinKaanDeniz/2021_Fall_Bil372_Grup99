@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace Bil372ProjeGrup99
 {
-    public partial class MurettebatPage : Form
+    public partial class PilotPage : Form
     {
         public string message;
         List<Personel> personel;
         List<Ucak> ucak;
-        public MurettebatPage(string msg)
+        public PilotPage(string msg)
         {
             InitializeComponent();
             message = msg;
             DataAccess da = new DataAccess();
             personel = new List<Personel>();
             ucak = new List<Ucak>();
-            MurettebatTipiComboBox.Items.Add("Pilot");
-            MurettebatTipiComboBox.Items.Add("Kabin Memuru");
             if (msg == "Ekle")
             {
-                personel = da.getAtanmamisPersonelAdiMurettebat();
+                personel = da.getAtanmamisMurettebatAdiPilot();
                 for (int i = 0; i < personel.Count; i++)
                 {
                     AdSoyadComboBox.Items.Add(personel[i].Ad + " " + personel[i].Soyad);
@@ -35,15 +33,13 @@ namespace Bil372ProjeGrup99
                 ucak = da.GetUcak();
                 for (int i = 0; i < ucak.Count; i++)
                 {
-                   UcakIDComboBox.Items.Add(ucak[i].UcakID);
+                    UcakIDComboBox.Items.Add(ucak[i].UcakID);
 
                 }
-                
-
             }
             else if (msg == "Düzenle")
             {
-                personel = da.getAtanmisPersonelAdiMurettebat();
+                personel = da.getAtanmisMurettebatAdiPilot();
                 for (int i = 0; i < personel.Count; i++)
                 {
                     AdSoyadComboBox.Items.Add(personel[i].Ad + " " + personel[i].Soyad);
@@ -58,7 +54,7 @@ namespace Bil372ProjeGrup99
             }
             else if (msg == "Sil")
             {
-                personel = da.getAtanmisPersonelAdiMurettebat();
+                personel = da.getAtanmisMurettebatAdiPilot();
                 for (int i = 0; i < personel.Count; i++)
                 {
                     AdSoyadComboBox.Items.Add(personel[i].Ad + " " + personel[i].Soyad);
@@ -70,6 +66,7 @@ namespace Bil372ProjeGrup99
         private void AdSoyadComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Personel personelT = null;
+            List<Pilot> pilotT = null;
             List<Murettebat> murettebatT = null;
             for (int i = 0; i < personel.Count; i++)
             {
@@ -80,23 +77,26 @@ namespace Bil372ProjeGrup99
                 }
             }
             DataAccess da = new DataAccess();
+            pilotT = da.getPilot(personelT.PersonelID);
             murettebatT = da.getMurettebat(personelT.PersonelID);
-            
             if (message == "Ekle")
             {
 
                 PersonelIDTextBox.Text = personelT.PersonelID;
                 PersonelIDTextBox.Enabled = false;
+                MurettebatIDTextBox.Text = murettebatT[0].MurettebatID;
+                MurettebatIDTextBox.Enabled = false;
+                UcakIDComboBox.Text = murettebatT[0].UcakID;
+                UcakIDComboBox.Enabled = false;
             }
             if (message == "Düzenle")
             {
 
-                MurettebatIDTextBox.Text = murettebatT[0].MurettebatID;
-                UcakIDComboBox.Text = murettebatT[0].UcakID;
-                PersonelIDTextBox.Text = murettebatT[0].PersonelID;
-                YabanciDilTextBox.Text = murettebatT[0].YabanciDil;
-                UcusSüresiTextBox.Text = murettebatT[0].UcusSuresi;
-                MurettebatTipiComboBox.Text = murettebatT[0].MurettebatTipi;
+                MurettebatIDTextBox.Text = pilotT[0].MurettebatID;
+                UcakIDComboBox.Text = pilotT[0].UcakID;
+                PersonelIDTextBox.Text = pilotT[0].PersonelID;
+                LisansTuruTextBox.Text = pilotT[0].LisansTuru;
+                PilotRoluTextBox.Text = pilotT[0].PilotRolu;               
                 MurettebatIDTextBox.Enabled = false;
                 PersonelIDTextBox.Enabled = false;
                 UcakIDComboBox.Enabled = false;
@@ -104,33 +104,28 @@ namespace Bil372ProjeGrup99
             }
             else if (message == "Sil")
             {
-                MurettebatIDTextBox.Text = murettebatT[0].MurettebatID;
-                UcakIDComboBox.Text = murettebatT[0].UcakID;
-                PersonelIDTextBox.Text = murettebatT[0].PersonelID;
-                YabanciDilTextBox.Text = murettebatT[0].YabanciDil;
-                UcusSüresiTextBox.Text = murettebatT[0].UcusSuresi;
-                MurettebatTipiComboBox.Text = murettebatT[0].MurettebatTipi;
-                MurettebatIDTextBox.Enabled = false;             
+                MurettebatIDTextBox.Text = pilotT[0].MurettebatID;
+                UcakIDComboBox.Text = pilotT[0].UcakID;
+                PersonelIDTextBox.Text = pilotT[0].PersonelID;
+                LisansTuruTextBox.Text = pilotT[0].LisansTuru;
+                PilotRoluTextBox.Text = pilotT[0].PilotRolu;
+                MurettebatIDTextBox.Enabled = false;
                 PersonelIDTextBox.Enabled = false;
-                YabanciDilTextBox.Enabled = false;
-                UcusSüresiTextBox.Enabled = false;
-                MurettebatTipiComboBox.Enabled = false;
+                LisansTuruTextBox.Enabled = false;
+                PilotRoluTextBox.Enabled = false;
                 UcakIDComboBox.Enabled = false;
             }
-
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (message == "Ekle")
             {
                 if (!(MurettebatIDTextBox.Text == string.Empty) && !(UcakIDComboBox.Text == string.Empty) && !(PersonelIDTextBox.Text == string.Empty)
-                   && !(YabanciDilTextBox.Text == string.Empty) && !(UcusSüresiTextBox.Text == string.Empty) && !(AdSoyadComboBox.Text == string.Empty) && !(MurettebatTipiComboBox.Text == string.Empty))
+                   && !(LisansTuruTextBox.Text == string.Empty) && !(PilotRoluTextBox.Text == string.Empty) && !(AdSoyadComboBox.Text == string.Empty) )
                 {
                     DataAccess da = new DataAccess();
-                    da.EkleMurettebat(MurettebatIDTextBox.Text, UcakIDComboBox.Text, PersonelIDTextBox.Text, YabanciDilTextBox.Text, UcusSüresiTextBox.Text, MurettebatTipiComboBox.Text);
+                    da.EklePilot(MurettebatIDTextBox.Text, UcakIDComboBox.Text, PersonelIDTextBox.Text, LisansTuruTextBox.Text, PilotRoluTextBox.Text);
                     this.Close();
                 }
                 else
@@ -143,10 +138,10 @@ namespace Bil372ProjeGrup99
             {
                 {
                     if (!(MurettebatIDTextBox.Text == string.Empty) && !(UcakIDComboBox.Text == string.Empty) && !(PersonelIDTextBox.Text == string.Empty)
-                    && !(YabanciDilTextBox.Text == string.Empty) && !(UcusSüresiTextBox.Text == string.Empty) && !(AdSoyadComboBox.Text == string.Empty) && !(MurettebatTipiComboBox.Text == string.Empty))
+                        && !(LisansTuruTextBox.Text == string.Empty) && !(PilotRoluTextBox.Text == string.Empty) && !(AdSoyadComboBox.Text == string.Empty))
                     {
                         DataAccess da = new DataAccess();
-                        da.UpdateMurettebat(MurettebatIDTextBox.Text, UcakIDComboBox.Text, PersonelIDTextBox.Text, YabanciDilTextBox.Text, UcusSüresiTextBox.Text, MurettebatTipiComboBox.Text);
+                        da.UpdatePilot(MurettebatIDTextBox.Text, UcakIDComboBox.Text, PersonelIDTextBox.Text, LisansTuruTextBox.Text, PilotRoluTextBox.Text);
                         this.Close();
                     }
                     else
@@ -160,12 +155,12 @@ namespace Bil372ProjeGrup99
                 if (!(AdSoyadComboBox.Text == string.Empty))
                 {
                     DataAccess da = new DataAccess();
-                    da.DeleteMurettebat(MurettebatIDTextBox.Text);
+                    da.DeletePilot(MurettebatIDTextBox.Text);
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Lütfen silinecek Mürettebatın ID'sini seçiniz.");
+                    MessageBox.Show("Lütfen silinecek Pilotun ID'sini seçiniz.");
                 }
 
             }
@@ -177,4 +172,3 @@ namespace Bil372ProjeGrup99
         }
     }
 }
-

@@ -45,7 +45,7 @@ namespace Bil372ProjeGrup99
             if (UcakIDcb != null)
             {
                 DataAccess da = new DataAccess();
-                da.InsertSefer(SeferIDtb.Text, UcakIDcb.Text, UcusSuresitb.Text, SeferTarihi.Value, KalkisZamani.Text, VarisZamani.Text, KalkisYeritb.Text, VarisYeritb.Text);
+                da.InsertSefer(SeferIDtb.Text, UcakIDcb.Text, UcusSuresitb.Text, SeferTarihi.Value, KalkisZamanitb.Text, VarisZamanitb.Text, KalkisYeritb.Text, VarisYeritb.Text);
             }
         }
 

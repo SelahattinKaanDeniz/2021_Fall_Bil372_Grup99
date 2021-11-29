@@ -26,7 +26,10 @@ namespace Bil372ProjeGrup99
                 if (x.SeferTarihi > today)
                 {
                     TimeSpan daysleft = x.SeferTarihi.Subtract(today);
+                    listView1.View = View.Details;
+                    listView1.Columns.Add("Kalkış-Varış Saat Kalan Gün ",235);
                     listView1.Items.Add(x.KalkisYeri + "-" + x.VarisYeri + "  " + x.KalkisZamani + "  " + daysleft.Days + " gun sonra");
+
                 }
             }
         }
