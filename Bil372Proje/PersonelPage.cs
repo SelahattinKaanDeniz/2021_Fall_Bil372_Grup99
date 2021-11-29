@@ -110,7 +110,7 @@ namespace Bil372ProjeGrup99
                         DataAccess da = new DataAccess();
                         da.UpdatePersonel(PersonelIDComboBox.Text, CinsiyetComboBox.Text, MaasTextBox.Text, DogumTarihidtp.Value, AdTextBox.Text, SoyadTextBox.Text,
                            EgitimTextBox.Text, TcnoTextBox.Text, SgnTextBox.Text, İseAlimTarihidtp.Value, TelefonNotb.Text, Adrestb.Text, Epostatb.Text, PersonelTipicb.Text);
-                        this.Close();
+                        this.Close(); 
                     }
                     else
                     {

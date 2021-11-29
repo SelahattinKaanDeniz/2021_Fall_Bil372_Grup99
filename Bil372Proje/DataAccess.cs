@@ -378,7 +378,7 @@ namespace Bil372ProjeGrup99
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
-                var output = connection.Query<Personel>($" select  * from personel where Personel.PersonelID IN(select  ServisPersoneli.PersonelID from ServisPersoneli where not exists(select TamirPersoneli.PersonelID from TamirPersoneli where TamirPersoneli.PersonelID = ServisPersoneli.PersonelID) and not exists(select GenelBakimTeknisyeni.PersonelID from GenelBakimTeknisyeni where GenelBakimTeknisyeni.PersonelID = ServisPersoneli.PersonelID) and ServisPersonelTipi = 'Bakim')").ToList();
+                var output = connection.Query<Personel>($" select  * from personel where Personel.PersonelID IN(select  ServisPersoneli.PersonelID from ServisPersoneli where not exists(select TamirPersoneli.PersonelID from TamirPersoneli where TamirPersoneli.PersonelID = ServisPersoneli.PersonelID) and not exists(select GenelBakimTeknisyeni.PersonelID from GenelBakimTeknisyeni where GenelBakimTeknisyeni.PersonelID = ServisPersoneli.PersonelID) and ServisPersonelTipi = 'Genel Bakım')").ToList();
                 return output;
             }
         }
@@ -644,7 +644,7 @@ namespace Bil372ProjeGrup99
             {
                 string querystr = "UPDATE Personel SET Cinsiyet='" + cinsiyet + "', Maas='" + maas + "', DogumTarihi='" + dogumTarihi + "', Ad='" + ad + "', Soyad='" + soyad + "', Egitim='" + egitim + "', TCNO='" + tcno + "', SGN='" + sgn + "', IseAlimTarihi='" + iseAlimTarihi + "', TelefonNO='" + telefonno + "', Adres='" + adres + "', Eposta='" + eposta + "', PersonelTipi='" + personelTipi + "' WHERE PersonelID='" + personelID + "'";
 
-                connection.Execute(querystr);
+                connection.Execute(querystr); 
 
             }
         }
