@@ -17,7 +17,6 @@ namespace Bil372ProjeGrup99
         {
             InitializeComponent();
             message = m;
-            InitializeComponent();
             DataAccess da = new DataAccess();
             List<Servis> servis = da.GetServis();
             foreach (Servis x in servis)

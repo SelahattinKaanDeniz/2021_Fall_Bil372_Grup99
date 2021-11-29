@@ -117,35 +117,114 @@ namespace Bil372ProjeGrup99
         }
 
         private void servispersoneliadicb_SelectedIndexChanged(object sender, EventArgs e)
-        {   if(message == "Ekle")
+        {   if (message == "Ekle")
             {
-               
-                    DataAccess da = new DataAccess();
-                    string[] temp = PersonelAdicb.Text.Split(' ');
-                    string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
-                    List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
-                    foreach (TamirPersoneli sp in TamirPersoneli)
+
+                DataAccess da = new DataAccess();
+                string[] temp = PersonelAdicb.Text.Split(' ');
+                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
+                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
+                foreach (TamirPersoneli sp in TamirPersoneli)
+                {
+                    if (sp.PersonelID == id)
                     {
-                        if (sp.PersonelID == id)
-                        {
-                            Uzmanliktb.Text = sp.Uzmanlik;
-                            comboBox1.Text = sp.ServisPersoneliID;
-                        }
+                        Uzmanliktb.Text = sp.Uzmanlik;
+                        comboBox1.Text = sp.ServisPersoneliID;
                     }
+                }
 
-                    List<Personel> Personel = new List<Personel>();
-                    Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
-                    comboBox1.Items.Clear();
-                    for (int i = 0; i < Personel.Count; i++)
-                    {
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
 
-                        comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
-                    }
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
 
 
-                
+
             }
-            else if (message == "Düzenle")
+            if (message == "Düzenle")
+            {
+                DataAccess da = new DataAccess();
+                string[] temp = PersonelAdicb.Text.Split(' ');
+                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
+                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
+                foreach (TamirPersoneli sp in TamirPersoneli)
+                {
+                    if (sp.PersonelID == id)
+                    {
+                        Uzmanliktb.Text= sp.Uzmanlik;
+                        comboBox1.Text = sp.ServisPersoneliID;
+                    }
+                }
+
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
+                    
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
+
+
+            }
+
+            if (message == "Sil")
+            {
+                DataAccess da = new DataAccess();
+                string[] temp = PersonelAdicb.Text.Split(' ');
+                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
+                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
+                foreach (TamirPersoneli sp in TamirPersoneli)
+                {
+                    if (sp.PersonelID == id)
+                    {
+                        Uzmanliktb.Text = sp.Uzmanlik;
+                        comboBox1.Text = sp.ServisPersoneliID;
+                    }
+                }
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
+
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
+                comboBox1.Enabled = false;
+                Uzmanliktb.Enabled = false;
+            }if (message == "Ekle")
+            {
+
+                DataAccess da = new DataAccess();
+                string[] temp = PersonelAdicb.Text.Split(' ');
+                string id = da.getTamirPersoneliIDbyName(temp[0], temp[1]);
+                List<TamirPersoneli> TamirPersoneli = da.GetTamirPersoneli();
+                foreach (TamirPersoneli sp in TamirPersoneli)
+                {
+                    if (sp.PersonelID == id)
+                    {
+                        Uzmanliktb.Text = sp.Uzmanlik;
+                        comboBox1.Text = sp.ServisPersoneliID;
+                    }
+                }
+
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
+
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
+
+
+
+            }
+            if (message == "Düzenle")
             {
                 DataAccess da = new DataAccess();
                 string[] temp = PersonelAdicb.Text.Split(' ');
