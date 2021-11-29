@@ -549,7 +549,49 @@ namespace Bil372ProjeGrup99
 
             }
         }
+        public List<Tamir> GetTamir()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Tamir>($"select * from Tamir; ").ToList();
+                return output;
+            }
+        }
+        public void DeleteTamir(string servisid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM Tamir WHERE ServisID='" + servisid + "'";
+                connection.Execute(querystr);
 
+            }
+        }
+        public void UpdateTamir(string servisid, DateTime kazatarihi, string kazasebebi,string tamirsonucu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE Tamir SET KazaTarihi='" + kazatarihi + "', KazaSebebi='" + kazasebebi + "', TamirSonucu='" + tamirsonucu + "' WHERE ServisID='" + servisid + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+        public void InsertTamir(String servisid, String ucakid, String personelid, DateTime kazatarihi, String kazasebebi,string tamirsonucu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Tamir tamir = new Tamir();
+                tamir.ServisID = servisid;
+                tamir.UcakID = ucakid;
+                tamir.PersonelID = personelid;
+                tamir.KazaTarihi = kazatarihi;
+                tamir.KazaSebebi = kazasebebi;
+                tamir.TamirSonucu = tamirsonucu;
+  
+                string sql = "INSERT INTO Tamir (PersonelID,ServisID,UcakID,KazaTarihi,KazaSebebi,TamirSonucu) Values (@PersonelID,@ServisID,@UcakID,@KazaTarihi,@KazaSebebi,@TamirSonucu);";
+                connection.Execute(sql, tamir);
+            }
+        }
     }
 }
 
