@@ -99,6 +99,10 @@
       <DependentUpon>KabinMemuruPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Kullanici.cs" />
+    <Compile Include="KullaniciEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KullaniciEkle.Designer.cs" />
     <Compile Include="KullaniciGirisi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +110,12 @@
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="KullaniciPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KullaniciPage.Designer.cs">
+      <DependentUpon>KullaniciPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Murettebat.cs" />
     <Compile Include="MurettebatPage.cs">
       <SubType>Form</SubType>
@@ -217,8 +227,12 @@
     <EmbeddedResource Include="KabinMemuruPage.resx">
       <DependentUpon>KabinMemuruPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="KullaniciEkle.resx" />
     <EmbeddedResource Include="KullaniciGirisi.resx">
       <DependentUpon>KullaniciGirisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KullaniciPage.resx">
+      <DependentUpon>KullaniciPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MurettebatPage.resx">
       <DependentUpon>MurettebatPage.cs</DependentUpon>

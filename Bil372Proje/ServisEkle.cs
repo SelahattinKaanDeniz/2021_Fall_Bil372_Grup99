@@ -14,9 +14,9 @@ namespace Bil372ProjeGrup99
     {
         public ServisEkle()
         {
+            InitializeComponent();
             ServisTipicb.Items.Add("GenelBakim");
             ServisTipicb.Items.Add("Tamir");
-            InitializeComponent();
             DataAccess da = new DataAccess();
             List<Ucak> ucaklar = da.GetUcak();
             foreach(Ucak x in ucaklar)

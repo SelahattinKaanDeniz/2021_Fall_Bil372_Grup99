@@ -43,7 +43,7 @@ namespace Bil372ProjeGrup99
                 if(message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
-                    da.UpdateServis(ServisIDcb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipitb.Text);
+                    da.UpdateServis(ServisIDcb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipicb.Text);
                     this.Close();
                 }
                 else if(message == "Sil")

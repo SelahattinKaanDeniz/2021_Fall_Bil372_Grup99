@@ -75,10 +75,17 @@ namespace Bil372ProjeGrup99
                         f15.ShowDialog();
                         break;
                     }
-                 /*case "Kullanici":
-                     KullaniciPage f2 = new KullaniciPage();
-                     f2.ShowDialog();
-                     break;*/
+                 case "Kullanici":
+                    if (islem == "Ekle")
+                    {
+                        KullaniciEkle f2 = new KullaniciEkle();
+                        f2.ShowDialog();
+                        break;
+                    }
+                    else
+                    {
+                        break;
+                    }
            
 
                 case "Ucak":
