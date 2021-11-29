@@ -817,6 +817,19 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
+        public void InsertKullanici(String KullaniciAdi, String sifre, String KullaniciTipi, String PersonelID)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                Kullanici kullanici = new Kullanici();
+                kullanici.KullaniciAdi = KullaniciAdi;
+                kullanici.Sifre = Aescoding.Encrypt(sifre);
+                kullanici.KullaniciTipi = KullaniciTipi;
+                kullanici.PersonelID = PersonelID;
+                string sql = "INSERT INTO Kullanici (KullaniciAdi,Sifre,KullaniciTipi,PersonelID) Values (@KullaniciAdi,@Sifre,@KullaniciTipi,@PersonelID);";
+                connection.Execute(sql, kullanici);
+            }
+        }
     }
 }
 
