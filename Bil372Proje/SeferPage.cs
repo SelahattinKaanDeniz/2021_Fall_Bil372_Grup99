@@ -26,7 +26,7 @@ namespace Bil372ProjeGrup99
             List<Ucak> ucaklar = da.GetUcak();
             foreach (Ucak x in ucaklar)
             {
-                SeferIDcb.Items.Add(x.UcakID);
+                UcakIDcb.Items.Add(x.UcakID);
             }
 
             if (m.Equals("Sil"))
@@ -48,11 +48,13 @@ namespace Bil372ProjeGrup99
             {
                 DataAccess da = new DataAccess();
                 da.DeleteSeferbyID(SeferIDcb.Text);
+                this.Close();
             }
-            else if (message == "Duzenle" && SeferIDcb.Text != null)
+            else if (message == "Düzenle" && SeferIDcb.Text != null)
             {
                 DataAccess da = new DataAccess();
                 da.UpdateSefer(SeferIDcb.Text, UcakIDcb.Text, UcusSuresitb.Text, SeferTarihi.Value, VarisZamanitb.Text, KalkisZamanitb.Text, VarisYeritb.Text, KalkisYeritb.Text);
+                this.Close();
             }
         }
 
@@ -76,7 +78,7 @@ namespace Bil372ProjeGrup99
                     }
                 }
             }
-            if (message == "Duzenle")
+            if (message == "Düzenle")
             {
                 DataAccess da = new DataAccess();
                 List<Sefer> seferler = da.GetSefer();

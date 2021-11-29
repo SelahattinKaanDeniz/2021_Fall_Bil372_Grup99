@@ -639,6 +639,7 @@ namespace Bil372ProjeGrup99
 
         public void UpdatePersonel(string personelID, string cinsiyet, string maas, DateTime dogumTarihi, string ad, string soyad
            , string egitim, string tcno, string sgn, DateTime iseAlimTarihi, string telefonno, string adres, string eposta, string personelTipi)
+
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
             {
@@ -800,6 +801,7 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
+        
     }
 }
 

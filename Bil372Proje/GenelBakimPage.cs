@@ -24,8 +24,8 @@ namespace Bil372ProjeGrup99
             {
                 ServisIDcb.Items.Add(x.ServisID);
             }
-            List<Personel> personel = da.GetPersonel();
-            foreach (Personel x in personel)
+            List<GenelBakimTeknisyeni> personel = da.GetGenelBakimTeknisyeni();
+            foreach (GenelBakimTeknisyeni x in personel)
             {
                 PersonelIDcb.Items.Add(x.PersonelID);
             }
@@ -61,16 +61,19 @@ namespace Bil372ProjeGrup99
                 {
                     DataAccess da = new DataAccess();
                     da.InsertGenelBakim(ServisIDcb.Text, UcakIDcb.Text, PersonelIDcb.Text, BakimTurutb.Text);
+                    this.Close();
                 }
                 else if (message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateGenelBakim(ServisIDcb.Text, BakimTurutb.Text);
+                    this.Close();
                 }
                 else if (message == "Sil")
                 {
                     DataAccess da = new DataAccess();
                     da.DeleteGenelBakim(ServisIDcb.Text);
+                    this.Close();
                 }
             }
         }
