@@ -592,6 +592,48 @@ namespace Bil372ProjeGrup99
                 connection.Execute(sql, tamir);
             }
         }
+        public void InsertGenelBakim (String servisid, String ucakid, String personelid, String bakimturu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                GenelBakim bakim = new GenelBakim();
+                bakim.PersonelID = personelid;
+                bakim.UcakID = ucakid;
+                bakim.ServisID = servisid;
+                bakim.BakimTuru = bakimturu;
+                
+
+                string sql = "INSERT INTO GenelBakim (PersonelID,ServisID,UcakID,BakimTuru) Values (@PersonelID,@ServisID,@UcakID,@BakimTuru);";
+                connection.Execute(sql, bakim);
+            }
+        }
+        public void UpdateGenelBakim(String servisid, String bakimturu)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "UPDATE GenelBakim SET BakimTuru='" + bakimturu + "' WHERE ServisID='" + servisid + "'";
+
+                connection.Execute(querystr);
+
+            }
+        }
+        public void DeleteGenelBakim(string servisid)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                string querystr = "DELETE FROM GenelBakim WHERE ServisID='" + servisid + "'";
+                connection.Execute(querystr);
+
+            }
+        }
+        public List<GenelBakim> GetGenelBakim()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<GenelBakim>($"select * from GenelBakim; ").ToList();
+                return output;
+            }
+        }
     }
 }
 
