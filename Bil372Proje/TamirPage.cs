@@ -35,7 +35,7 @@ namespace Bil372ProjeGrup99
             }
             if(message=="Duzenle")
             {
-                ServisIDcb.Enabled = false;
+                PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
                 KazaTarihi.Enabled = false;
                 KazaSebebitb.Enabled = false;
@@ -43,7 +43,7 @@ namespace Bil372ProjeGrup99
             }
             if (message == "Sil")
             {
-                ServisIDcb.Enabled = false;
+                PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
                 KazaTarihi.Enabled = false;
                 KazaSebebitb.Enabled = false;
@@ -76,6 +76,12 @@ namespace Bil372ProjeGrup99
                     da.DeleteTamir(ServisIDcb.Text);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
         }
 
         private void ServisIDcb_SelectedIndexChanged(object sender, EventArgs e)

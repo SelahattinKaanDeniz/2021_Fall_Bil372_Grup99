@@ -34,13 +34,13 @@ namespace Bil372ProjeGrup99
             {
                 UcakIDcb.Items.Add(x.UcakID);
             }
-            if (message == "Duzenle")
+            if (m == "Duzenle")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
                 BakimTurutb.Enabled = false;
             }
-            if (message == "Sil")
+            if (m == "Sil")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
