@@ -21,6 +21,7 @@ namespace Bil372ProjeGrup99
             comboBox1.Items.Add("Tamir");
             comboBox1.Items.Add("GenelBakim");
             listView1.View = View.Details;
+            listView1.Columns.Add("Servisler");
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
@@ -112,6 +113,12 @@ namespace Bil372ProjeGrup99
                     break;
 
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(0);
         }
     }
 }

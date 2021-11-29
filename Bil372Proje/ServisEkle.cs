@@ -14,6 +14,8 @@ namespace Bil372ProjeGrup99
     {
         public ServisEkle()
         {
+            ServisTipicb.Items.Add("GenelBakim");
+            ServisTipicb.Items.Add("Tamir");
             InitializeComponent();
             DataAccess da = new DataAccess();
             List<Ucak> ucaklar = da.GetUcak();
@@ -29,7 +31,7 @@ namespace Bil372ProjeGrup99
             if (UcakIDcb != null)
             {
                 DataAccess da = new DataAccess();
-                da.InsertServis(ServisIDtb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipitb.Text);
+                da.InsertServis(ServisIDtb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipicb.Text);
                 this.Close();
             }
         }

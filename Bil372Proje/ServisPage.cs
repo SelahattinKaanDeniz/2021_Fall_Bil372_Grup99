@@ -17,6 +17,8 @@ namespace Bil372ProjeGrup99
         {
             message = m;
             InitializeComponent();
+            ServisTipicb.Items.Add("GenelBakim");
+            ServisTipicb.Items.Add("Tamir");
             DataAccess da = new DataAccess();
             List<Servis> servis = da.GetServis();
             foreach(Servis x in servis)
@@ -29,7 +31,7 @@ namespace Bil372ProjeGrup99
                 UcakIDcb.Items.Add(x.UcakID);
             }
             UcakIDcb.Enabled = false;
-            ServisTipitb.Enabled = false;
+            ServisTipicb.Enabled = false;
             BaslangicTarihi.Enabled = false;
             BitisTarihi.Enabled = false;
         }
@@ -58,7 +60,7 @@ namespace Bil372ProjeGrup99
             if (message == "Düzenle")
             {
                 UcakIDcb.Enabled = true;
-                ServisTipitb.Enabled = true;
+                ServisTipicb.Enabled = true;
                 BaslangicTarihi.Enabled = true;
                 BitisTarihi.Enabled = true ;
                 DataAccess da = new DataAccess();
@@ -68,7 +70,7 @@ namespace Bil372ProjeGrup99
                     if (x.ServisID == ServisIDcb.Text)
                     {
                         UcakIDcb.Text = x.UcakID;
-                        ServisTipitb.Text = x.ServisTipi;
+                        ServisTipicb.Text = x.ServisTipi;
                         BaslangicTarihi.Value = x.BaslangicTarihi;
                         BitisTarihi.Value = x.BitisTarihi;
 
@@ -84,7 +86,7 @@ namespace Bil372ProjeGrup99
                     if (x.ServisID == ServisIDcb.Text)
                     {
                         UcakIDcb.Text = x.UcakID;
-                        ServisTipitb.Text = x.ServisTipi;
+                        ServisTipicb.Text = x.ServisTipi;
                         BaslangicTarihi.Value = x.BaslangicTarihi;
                         BitisTarihi.Value = x.BitisTarihi;
 

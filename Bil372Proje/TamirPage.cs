@@ -18,22 +18,28 @@ namespace Bil372ProjeGrup99
             message = m;
             InitializeComponent();
             DataAccess da = new DataAccess();
-            List<Servis> servis = da.GetServis();
-            foreach(Servis x in servis)
+            if (m == "Ekle")
             {
-                ServisIDcb.Items.Add(x.ServisID);
+                List<Servis> servis = da.GetAtanmamisTamir();
+                foreach (Servis x in servis)
+                {
+                    ServisIDcb.Items.Add(x.ServisID);
+                }
+            }
+            if (m == "Düzenle")
+            {
+                ; List<Tamir> genelbakimlist = da.GetTamir();
+                foreach (Tamir x in genelbakimlist)
+                {
+                    ServisIDcb.Items.Add(x.ServisID);
+                }
             }
             List<TamirPersoneli> personel = da.GetTamirPersoneli();
             foreach (TamirPersoneli x in personel)
             {
                 PersonelIDcb.Items.Add(x.PersonelID);
             }
-            List<Ucak> ucak = da.GetUcak();
-            foreach (Ucak x in ucak)
-            {
-                UcakIDcb.Items.Add(x.UcakID);
-            }
-            if(message=="Düzenle")
+            if (message=="Düzenle")
             {
                 PersonelIDcb.Enabled = false;
                 UcakIDcb.Enabled = false;
@@ -64,16 +70,19 @@ namespace Bil372ProjeGrup99
                 {
                     DataAccess da = new DataAccess();
                     da.InsertTamir(ServisIDcb.Text, UcakIDcb.Text, PersonelIDcb.Text, KazaTarihi.Value, KazaSebebitb.Text, TamirSonucutb.Text);
+                    this.Close();
                 }
                 else if (message == "Düzenle")
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateTamir(ServisIDcb.Text, KazaTarihi.Value, KazaSebebitb.Text, TamirSonucutb.Text);
+                    this.Close();
                 }
                 else if (message == "Sil")
                 {
                     DataAccess da = new DataAccess();
                     da.DeleteTamir(ServisIDcb.Text);
+                    this.Close();
                 }
             }
         }

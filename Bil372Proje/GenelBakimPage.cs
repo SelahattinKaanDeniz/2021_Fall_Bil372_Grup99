@@ -18,10 +18,21 @@ namespace Bil372ProjeGrup99
             InitializeComponent();
             message = m;
             DataAccess da = new DataAccess();
-            List<Servis> servis = da.GetServis();
-            foreach (Servis x in servis)
+            if (m == "Ekle")
             {
-                ServisIDcb.Items.Add(x.ServisID);
+                List<Servis> servis = da.GetAtanmamisGenelBakimServisi();
+                foreach (Servis x in servis)
+                {
+                    ServisIDcb.Items.Add(x.ServisID);
+                }
+            }
+            if (m == "Düzenle")
+            {
+;                List<GenelBakim> genelbakimlist= da.GetGenelBakim();
+                foreach (GenelBakim x in genelbakimlist)
+                {
+                    ServisIDcb.Items.Add(x.ServisID);
+                }
             }
             List<GenelBakimTeknisyeni> personel = da.GetGenelBakimTeknisyeni();
             foreach (GenelBakimTeknisyeni x in personel)

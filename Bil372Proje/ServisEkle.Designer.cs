@@ -33,7 +33,6 @@ namespace Bil372ProjeGrup99
             this.ServisIDtb = new System.Windows.Forms.TextBox();
             this.BitisTarihi = new System.Windows.Forms.DateTimePicker();
             this.BaslangicTarihi = new System.Windows.Forms.DateTimePicker();
-            this.ServisTipitb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@ namespace Bil372ProjeGrup99
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ServisTipicb = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // UcakIDcb
@@ -71,13 +71,6 @@ namespace Bil372ProjeGrup99
             this.BaslangicTarihi.Name = "BaslangicTarihi";
             this.BaslangicTarihi.Size = new System.Drawing.Size(200, 20);
             this.BaslangicTarihi.TabIndex = 3;
-            // 
-            // ServisTipitb
-            // 
-            this.ServisTipitb.Location = new System.Drawing.Point(109, 224);
-            this.ServisTipitb.Name = "ServisTipitb";
-            this.ServisTipitb.Size = new System.Drawing.Size(149, 20);
-            this.ServisTipitb.TabIndex = 4;
             // 
             // button1
             // 
@@ -144,11 +137,20 @@ namespace Bil372ProjeGrup99
             this.label5.TabIndex = 11;
             this.label5.Text = "BitisTarihi";
             // 
+            // ServisTipicb
+            // 
+            this.ServisTipicb.FormattingEnabled = true;
+            this.ServisTipicb.Location = new System.Drawing.Point(109, 224);
+            this.ServisTipicb.Name = "ServisTipicb";
+            this.ServisTipicb.Size = new System.Drawing.Size(149, 21);
+            this.ServisTipicb.TabIndex = 12;
+            // 
             // ServisEkle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 392);
+            this.Controls.Add(this.ServisTipicb);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -156,7 +158,6 @@ namespace Bil372ProjeGrup99
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ServisTipitb);
             this.Controls.Add(this.BaslangicTarihi);
             this.Controls.Add(this.BitisTarihi);
             this.Controls.Add(this.ServisIDtb);
@@ -174,7 +175,6 @@ namespace Bil372ProjeGrup99
         private System.Windows.Forms.TextBox ServisIDtb;
         private System.Windows.Forms.DateTimePicker BitisTarihi;
         private System.Windows.Forms.DateTimePicker BaslangicTarihi;
-        private System.Windows.Forms.TextBox ServisTipitb;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
@@ -182,5 +182,6 @@ namespace Bil372ProjeGrup99
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox ServisTipicb;
     }
 }

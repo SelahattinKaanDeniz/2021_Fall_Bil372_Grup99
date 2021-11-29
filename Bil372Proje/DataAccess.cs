@@ -801,7 +801,22 @@ namespace Bil372ProjeGrup99
                 return output;
             }
         }
-        
+        public List<Servis> GetAtanmamisGenelBakimServisi()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Servis>($"SELECT * FROM Servis Where ServisTipi='" + "GenelBakim" + "'").ToList();
+                return output;
+            }
+        }
+        public List<Servis> GetAtanmamisTamir()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("Bil372")))
+            {
+                var output = connection.Query<Servis>($"SELECT * FROM Servis Where ServisTipi='" + "Tamir" + "'").ToList();
+                return output;
+            }
+        }
     }
 }
 

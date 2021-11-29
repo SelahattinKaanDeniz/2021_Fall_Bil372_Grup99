@@ -59,6 +59,7 @@ namespace Bil372ProjeGrup99
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
+            System.Environment.Exit(0);
         }
 
         private void button2_Click(object sender, EventArgs e)
