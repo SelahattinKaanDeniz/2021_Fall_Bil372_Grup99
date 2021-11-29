@@ -30,6 +30,7 @@ namespace Bil372ProjeGrup99
             {
                 DataAccess da = new DataAccess();
                 da.InsertServis(ServisIDtb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipitb.Text);
+                this.Close();
             }
         }
 

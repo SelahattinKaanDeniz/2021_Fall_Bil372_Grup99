@@ -42,11 +42,13 @@ namespace Bil372ProjeGrup99
                 {
                     DataAccess da = new DataAccess();
                     da.UpdateServis(ServisIDcb.Text, UcakIDcb.Text, BaslangicTarihi.Value, BitisTarihi.Value, ServisTipitb.Text);
+                    this.Close();
                 }
                 else if(message == "Sil")
                 {
                     DataAccess da = new DataAccess();
                     da.DeleteServis(ServisIDcb.Text);
+                    this.Close();
                 }
             }
         }

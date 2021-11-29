@@ -23,8 +23,8 @@ namespace Bil372ProjeGrup99
             {
                 ServisIDcb.Items.Add(x.ServisID);
             }
-            List<Personel> personel = da.GetPersonel();
-            foreach (Personel x in personel)
+            List<TamirPersoneli> personel = da.GetTamirPersoneli();
+            foreach (TamirPersoneli x in personel)
             {
                 PersonelIDcb.Items.Add(x.PersonelID);
             }
