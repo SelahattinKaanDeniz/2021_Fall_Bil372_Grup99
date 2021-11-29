@@ -60,7 +60,15 @@ namespace Bil372ProjeGrup99
                     ServisEkle newscreen = new ServisEkle();
                     newscreen.ShowDialog();
                     break;
-                
+                case "Tamir":
+                    TamirPage newscreen1 = new TamirPage("Ekle");
+                    newscreen1.ShowDialog();
+                    break;
+                case "GenelBakim":
+                    GenelBakimPage newscreen2 = new GenelBakimPage("Ekle");
+                    newscreen2.ShowDialog();
+                    break;
+
             }
         }
 
@@ -70,8 +78,16 @@ namespace Bil372ProjeGrup99
             switch (yapilanis)
             {
                 case "Servis":
-                    ServisPage newscreen = new ServisPage("Düzenle");
+                    ServisPage newscreen = new ServisPage("Duzenle");
                     newscreen.ShowDialog();
+                    break;
+                case "Tamir":
+                    TamirPage newscreen1 = new TamirPage("Duzenle");
+                    newscreen1.ShowDialog();
+                    break;
+                case "GenelBakim":
+                    GenelBakimPage newscreen2 = new GenelBakimPage("Duzenle");
+                    newscreen2.ShowDialog();
                     break;
 
             }
@@ -85,6 +101,14 @@ namespace Bil372ProjeGrup99
                 case "Servis":
                     ServisPage newscreen = new ServisPage("Sil");
                     newscreen.ShowDialog();
+                    break;
+                case "Tamir":
+                    TamirPage newscreen1 = new TamirPage("Sil");
+                    newscreen1.ShowDialog();
+                    break;
+                case "GenelBakim":
+                    GenelBakimPage newscreen2 = new GenelBakimPage("Sil");
+                    newscreen2.ShowDialog();
                     break;
 
             }

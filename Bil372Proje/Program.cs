@@ -16,7 +16,7 @@ namespace Bil372ProjeGrup99
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminPage());
+            Application.Run(new ServisYoneticisiPage());
         }
     }
 }
