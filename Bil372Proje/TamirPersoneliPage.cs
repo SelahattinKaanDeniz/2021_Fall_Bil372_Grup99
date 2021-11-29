@@ -118,6 +118,22 @@ namespace Bil372ProjeGrup99
 
         private void servispersoneliadicb_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (message == "Ekle")
+            {
+                DataAccess da = new DataAccess();
+                
+
+                List<Personel> Personel = new List<Personel>();
+                Personel = da.getAtanmamisServisPersoneliAdiTamirPersoneli();
+                comboBox1.Items.Clear();
+                for (int i = 0; i < Personel.Count; i++)
+                {
+
+                    comboBox1.Items.Add(da.getServisPersonelIDbyPersonelID(Personel[i].PersonelID));
+                }
+
+
+            }
             if (message == "Düzenle")
             {
                 DataAccess da = new DataAccess();
